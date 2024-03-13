@@ -63,5 +63,12 @@ const routes = [
     icon: <MdHome className="h-6 w-6" />,
     component: <RTLDefault />,
   },
+  {
+    name: "Test",
+    layout: "/admin",
+    path: "test",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Profile />,
+  }
 ];
 export default routes;
