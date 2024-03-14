@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import trash from "assets/img/ColleBree/trash.png"; // Importa el icono de la basura
 import BannerFoto from "assets/img/ColleBree/frame-85.png"; // Importa la imagen de fondo
+import pen from "assets/img/ColleBree/pen.png"; // Importa el icono del lápiz
 
 const CourseCardWrapper = styled.div`
   background-color: white;
@@ -52,6 +53,8 @@ const Text = styled.div`
 `;
 
 const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
   align-self: flex-end;
   margin-top: auto;
 `;
@@ -59,6 +62,7 @@ const IconWrapper = styled.div`
 const Icon = styled.img`
   width: 20px;
   height: 20px;
+  margin-right: 10px; /* Ajusta el margen entre los iconos si es necesario */
 `;
 
 const CourseCard = ({ text, onClick, foto = BannerFoto }) => {
@@ -69,8 +73,9 @@ const CourseCard = ({ text, onClick, foto = BannerFoto }) => {
         <InnerDiv>
           <Text>{text}</Text>
           <IconWrapper>
+          <Icon src={pen} alt="Icono de Lápiz" />
+
             <Icon src={trash} alt="Icono de Basura" />
-            
           </IconWrapper>
         </InnerDiv>
       </FrameWrapper>
