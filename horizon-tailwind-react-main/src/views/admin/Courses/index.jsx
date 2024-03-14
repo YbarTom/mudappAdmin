@@ -1,42 +1,58 @@
-import { ButtonLogOut } from "./components/randomButton";
+import React, { useState } from 'react';
 
 const Test = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    apellido: '',
+    email: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/guardar-datos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        console.log('Datos guardados exitosamente.');
+      } else {
+        console.error('Error al guardar datos.');
+      }
+    } catch (error) {
+      console.error('Error al enviar los datos:', error);
+    }
+  };
+
   return (
     <div>
-      {/* Card widget */}
-
       <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
-          <ButtonLogOut></ButtonLogOut>
-      </div>
-
-      {/* Charts */}
-
-      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
-        
-      </div>
-
-      {/* Tables & Charts */}
-
-      <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
-        {/* Check Table */}
         <div>
-          
-        </div>
-
-        {/* Traffic chart & Pie Chart */}
-
-        <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-          
-        </div>
-
-        {/* Complex Table , Task & Calendar */}
-
-        
-
-        {/* Task chart & Calendar */}
-
-        <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
-          
+          <h2>Introduce tus datos:</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" value={formData.nombre} onChange={handleChange} />
+            </div>
+            <div>
+              <label htmlFor="apellido">Apellido:</label>
+              <input type="text" id="apellido" name="apellido" value={formData.apellido} onChange={handleChange} />
+            </div>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
         </div>
       </div>
     </div>
