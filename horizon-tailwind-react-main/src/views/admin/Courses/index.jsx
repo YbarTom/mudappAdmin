@@ -6,15 +6,24 @@ const Test = () => {
     <div>
       {/* Card widget */}
 
-      <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
-          <ButtonLogOut></ButtonLogOut>
+      <div className="mt-3 w-[335px]">
+    <ButtonLogOut></ButtonLogOut>
+</div>
 
-      </div>
 
       {/* Charts */}
 
-      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
         <CourseCard text="Course Card 1" progress={90}/>
+        <CourseCard text="Course Card 1" progress={90}/>
+
+        <CourseCard text="Course Card 1" progress={90}/>
+
+        <CourseCard text="Course Card 1" progress={90}/>
+
+        <CourseCard text="Course Card 1" progress={90}/>
+
+
       </div>
 
       {/* Tables & Charts */}
