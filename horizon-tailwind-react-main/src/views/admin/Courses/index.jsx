@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CourseCard from "./components/CourseCard";
 import { ButtonLogOut } from "./components/randomButton";
-
+import CourseCardPlus from "./components/CourseCardPlus";
 const Test = () => {
   const [formData, setFormData] = useState({
     nombre: '',
@@ -53,7 +53,7 @@ const Test = () => {
 
         <CourseCard text="Course Card 1" progress={90} />
 
-
+        <CourseCardPlus/>
       </div>
 
       {/* Tables & Charts */}
