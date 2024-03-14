@@ -61,7 +61,7 @@ const Test = () => {
   return (
     <div>
       <div className="mt-3 w-[335px]">
-        <ButtonLogOut></ButtonLogOut>
+        <ButtonLogOut text={"Create new course"}></ButtonLogOut>
       </div>
       {/* Charts */}
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
