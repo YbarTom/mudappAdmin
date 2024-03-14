@@ -76,11 +76,11 @@ const CourseCard = ({ text, onClick, foto = BannerFoto }) => {
   };
 
   return (
-    <CourseCardWrapper onClick={onClick}>
+    <CourseCardWrapper onClick={onClick} className=" !bg-white dark:!bg-navy-700" >
       <Frame foto={foto} />
       <FrameWrapper>
         <InnerDiv>
-          <Text>{text}</Text>
+          <Text className="text-navy-700 dark:text-white">{text}</Text>
           <IconWrapper>
             <Icon
               src={isViewVisible ? view : hide}
