@@ -1,9 +1,11 @@
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import React from "react";
 import styled from "styled-components";
 import trash from "assets/img/ColleBree/trash.png"; // Importa el icono de la basura
 import BannerFoto from "assets/img/ColleBree/frame-85.png"; // Importa la imagen de fondo
 import pen from "assets/img/ColleBree/pen.png"; // Importa el icono del lápiz
+import view from "assets/img/ColleBree/view.png"; // Importa el icono de la vista
+import hide from "assets/img/ColleBree/hide.png"; // Importa el icono de ocultar
 
 const CourseCardWrapper = styled.div`
   background-color: white;
@@ -63,9 +65,16 @@ const Icon = styled.img`
   width: 20px;
   height: 20px;
   margin-right: 10px; /* Ajusta el margen entre los iconos si es necesario */
+  cursor: pointer;
 `;
 
 const CourseCard = ({ text, onClick, foto = BannerFoto }) => {
+  const [isViewVisible, setViewVisible] = useState(true);
+
+  const toggleView = () => {
+    setViewVisible(!isViewVisible);
+  };
+
   return (
     <CourseCardWrapper onClick={onClick}>
       <Frame foto={foto} />
@@ -73,8 +82,12 @@ const CourseCard = ({ text, onClick, foto = BannerFoto }) => {
         <InnerDiv>
           <Text>{text}</Text>
           <IconWrapper>
-          <Icon src={pen} alt="Icono de Lápiz" />
-
+            <Icon
+              src={isViewVisible ? view : hide}
+              alt={isViewVisible ? "Icono de Vista" : "Icono de Ocultar"}
+              onClick={toggleView}
+            />
+            <Icon src={pen} alt="Icono de Lápiz" />
             <Icon src={trash} alt="Icono de Basura" />
           </IconWrapper>
         </InnerDiv>
