@@ -62,15 +62,14 @@ const Text = styled.div`
 
 
 
-const CourseCard = ({ text, progress, onClick, foto=BannerFoto}) => {
+const CourseCard = ({ text, onClick, foto=BannerFoto}) => {
     return (
         <CourseCardWrapper onClick={onClick}>
             <Frame foto={foto} />
             <FrameWrapper>
                 <InnerDiv>
                     <Text>{text}</Text>
-                    {/* Assuming ProgressBarText is a styled component */}
-                    <ProgressBarText progress={progress} />
+                    
                 </InnerDiv>
             </FrameWrapper>
         </CourseCardWrapper>
