@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import CourseCard from "./components/CourseCard";
 import { ButtonLogOut } from "./components/randomButton";
 import CourseCardPlus from "./components/CourseCardPlus";
+import routes from 'routes';
+import { Link } from "react-router-dom";
+
 const Test = () => {
   const [formData, setFormData] = useState({
     titleCourse: '',
@@ -57,14 +60,14 @@ const Test = () => {
       console.error('Error al enviar los datos:', error);
     }
   };
-  const handeClick = () => {
-    console.log("Create new course");
-  }
+  
 
   return (
     <div>
       <div className="mt-3 w-[335px]">
-        <ButtonLogOut text={"Create new course"} clickhandler={()=>handeClick()}></ButtonLogOut>
+      <Link key={3} to={"/admin/newCourse"}>
+        <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
+        </Link>
       </div>
       {/* Charts */}
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -76,8 +79,10 @@ const Test = () => {
         <CourseCard text="Course Card 1" progress={90} />
 
         <CourseCard text="Course Card 1" progress={90} />
-
-        <CourseCardPlus clickhandler={()=>handeClick()}/>
+        
+        <Link key={3} to={"/admin/newCourse"}>
+        <CourseCardPlus />
+        </Link>
       </div>
 
       {/* Tables & Charts */}
