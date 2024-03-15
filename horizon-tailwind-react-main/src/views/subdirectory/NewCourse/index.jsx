@@ -10,6 +10,8 @@ const Test = () => {
     idCourse: 0,
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
+  const [showThirdForm, setShowThirdForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
+  const [showFourForm, setShowFourForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
 
   const handleChangeCourse = (e) => {
     setFormDataCourse({ ...formDataCourse, [e.target.name]: e.target.value });
@@ -21,7 +23,7 @@ const Test = () => {
 
   const handleSubmitCourse = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
         method: 'POST',
@@ -33,13 +35,13 @@ const Test = () => {
           photo: formDataCourse.photo
         })
       });
-  
+
       const data = await response.json();
       console.log('ID del nuevo curso:', data.id);
-  
+
       // Actualizar el estado formDataLevel con el ID del curso recién guardado
       setFormDataLevel({ ...formDataLevel, idCourse: data.id });
-  
+
       console.log('Datos guardados exitosamente.');
       setShowSecondForm(true);
       // Aquí puedes hacer lo que quieras con el ID, por ejemplo, mostrarlo en la interfaz de usuario
@@ -64,7 +66,7 @@ const Test = () => {
 
       if (response.ok) {
         console.log('Datos guardados exitosamente level');
-        setShowSecondForm(true); // Mostrar el segundo formulario después de enviar el primero
+        setShowThirdForm(true); // Mostrar el tercer formulario después de enviar el segundo
       } else {
         console.error('Error al guardar datos.');
       }
@@ -73,6 +75,9 @@ const Test = () => {
     }
   };
 
+  const handleSubmitLesson = async (e) => {
+    setShowFourForm(true);
+  }
   useEffect(() => {
     // Este efecto se activa cada vez que formDataLevel cambia
     console.log(formDataLevel);
@@ -96,7 +101,7 @@ const Test = () => {
           </form>
         </div>
       )}
-      {showSecondForm && ( // Mostrar el segundo formulario si showSecondForm es verdadero
+      {showSecondForm && !showThirdForm && !showFourForm && ( // Mostrar el segundo formulario si showSecondForm es verdadero y el tercer formulario no está mostrándose
         <div>
           <h2>Segundo formulario:</h2>
           <form onSubmit={handleSubmitLevel}>
@@ -106,6 +111,33 @@ const Test = () => {
             </div>
             <button type="submit">Enviar</button>
           </form>
+        </div>
+      )}
+      {showThirdForm && !showFourForm && ( // Mostrar el tercer formulario si showThirdForm es verdadero
+        <div>
+          <h2>Tercer formulario:</h2>
+          <form onSubmit={handleSubmitLesson}>
+            <div>
+              <label htmlFor="title">Nombre de la lesson:</label>
+              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+          {/* Aquí colocarías el contenido y el formulario del tercer paso */}
+        </div>
+      )}
+
+      {showFourForm && ( // Mostrar el tercer formulario si showThirdForm es verdadero
+        <div>
+          <h2>Cuarto formulario:</h2>
+          <form onSubmit={handleSubmitLevel}>
+            <div>
+              <label htmlFor="title">Nombre de la lesson:</label>
+              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+          {/* Aquí colocarías el contenido y el formulario del tercer paso */}
         </div>
       )}
     </div>
