@@ -20,7 +20,7 @@ export function SidebarLinks(props) {
       if (
         (route.layout === "/admin" ||
         route.layout === "/auth" ||
-        route.layout === "/rtl" ) && route.path !== "NewCourse"
+        route.layout === "/rtl" ) && route.layout !== "subdirectory" 
       ) {
         return (
           <Link key={index} to={route.layout + "/" + route.path}>
