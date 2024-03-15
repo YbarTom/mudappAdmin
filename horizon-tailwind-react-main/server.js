@@ -10,8 +10,8 @@ app.use(cors()); // Usa cors para habilitar CORS en tu servidor
 
 app.post('/guardar-datos-course', async (req, res) => {
   try {
-    const { title, photo, levels } = req.body;
-    const newData = { title, photo, levels };
+    const { title, photo } = req.body;
+    const newData = { title, photo };
 
     console.log(newData)
 

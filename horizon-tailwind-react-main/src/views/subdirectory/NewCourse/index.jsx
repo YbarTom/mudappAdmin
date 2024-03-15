@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
-import CourseCard from "./components/CourseCard";
-import { ButtonLogOut } from "./components/randomButton";
-import CourseCardPlus from "./components/CourseCardPlus";
 
 const Test = () => {
   const [formData, setFormData] = useState({
     title: '',
-    photo: '',
-    levels: []
+    photo: ''
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleChangeCourse = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleChangeCourseLevels = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -34,8 +26,7 @@ const Test = () => {
         },
         body: JSON.stringify({
           title: formData.title,
-          photo: formData.photo,
-          levels: formData.levels // Aquí estamos enviando directamente el array de niveles
+          photo: formData.photo
         })
       });
 
@@ -74,7 +65,7 @@ const Test = () => {
   };
   return (
     <div>
-      {!showSecondForm && ( // Mostrar el primer formulario si showSecondForm es falso
+      {!showSecondForm && (
         <div>
           <h2>Introduce tus datos:</h2>
           <form onSubmit={handleSubmitCourse}>
@@ -85,10 +76,6 @@ const Test = () => {
             <div>
               <label htmlFor="photo">Foto:</label>
               <input type="text" id="photo" name="photo" value={formData.photo} onChange={handleChangeCourse} />
-            </div>
-            <div>
-              <label htmlFor="levels">Número de niveles:</label>
-              <input type="text" id="levels" name="levels" value={formData.levels} onChange={handleChangeCourseLevels} />
             </div>
             <button type="submit">Enviar</button>
           </form>
