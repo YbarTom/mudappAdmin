@@ -39,7 +39,9 @@ app.post('/guardar-datos-course', async (req, res) => {
     // Escribir los datos actualizados en el archivo JSON
     await fs.writeFile('courses.json', JSON.stringify(jsonData, null, 2));
 
-    res.sendStatus(200);
+    // Enviar el ID generado como parte de la respuesta al cliente
+    res.status(200).json({ id });
+
   } catch (error) {
     console.error('Error al guardar los datos:', error);
     res.sendStatus(500);
@@ -48,8 +50,8 @@ app.post('/guardar-datos-course', async (req, res) => {
 
 app.post('/guardar-datos-level', async (req, res) => {
     try {
-      const { titleLevel } = req.body;
-      const newData = { titleLevel };
+      const { title } = req.body;
+      const newData = { title };
   
       console.log(newData)
   

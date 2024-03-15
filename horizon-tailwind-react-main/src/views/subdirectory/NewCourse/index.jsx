@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Test = () => {
-  const [formData, setFormData] = useState({
+  const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
+  });
+  const [formDataLevel, setFormDataLevel] = useState({
+    title: '',
+    idCourse: 0,
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleChangeCourse = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormDataCourse({ ...formDataCourse, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChangeLevel = (e) => {
+    setFormDataLevel({ ...formDataLevel, [e.target.name]: e.target.value });
   };
 
   const handleSubmitCourse = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
         method: 'POST',
@@ -25,17 +29,20 @@ const Test = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          title: formData.title,
-          photo: formData.photo
+          title: formDataCourse.title,
+          photo: formDataCourse.photo
         })
       });
-
-      if (response.ok) {
-        console.log('Datos guardados exitosamente.');
-        setShowSecondForm(true); // Mostrar el segundo formulario después de enviar el primero
-      } else {
-        console.error('Error al guardar datos.');
-      }
+  
+      const data = await response.json();
+      console.log('ID del nuevo curso:', data.id);
+  
+      // Actualizar el estado formDataLevel con el ID del curso recién guardado
+      setFormDataLevel({ ...formDataLevel, idCourse: data.id });
+  
+      console.log('Datos guardados exitosamente.');
+      setShowSecondForm(true);
+      // Aquí puedes hacer lo que quieras con el ID, por ejemplo, mostrarlo en la interfaz de usuario
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
@@ -50,11 +57,13 @@ const Test = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          title: formDataLevel.title,
+        })
       });
 
       if (response.ok) {
-        console.log('Datos guardados exitosamente.');
+        console.log('Datos guardados exitosamente level');
         setShowSecondForm(true); // Mostrar el segundo formulario después de enviar el primero
       } else {
         console.error('Error al guardar datos.');
@@ -63,6 +72,12 @@ const Test = () => {
       console.error('Error al enviar los datos:', error);
     }
   };
+
+  useEffect(() => {
+    // Este efecto se activa cada vez que formDataLevel cambia
+    console.log(formDataLevel);
+  }, [formDataLevel]);
+
   return (
     <div>
       {!showSecondForm && (
@@ -71,11 +86,11 @@ const Test = () => {
           <form onSubmit={handleSubmitCourse}>
             <div>
               <label htmlFor="title">Nombre del curso:</label>
-              <input type="text" id="title" name="title" value={formData.title} onChange={handleChangeCourse} />
+              <input type="text" id="title" name="title" value={formDataCourse.title} onChange={handleChangeCourse} />
             </div>
             <div>
               <label htmlFor="photo">Foto:</label>
-              <input type="text" id="photo" name="photo" value={formData.photo} onChange={handleChangeCourse} />
+              <input type="text" id="photo" name="photo" value={formDataCourse.photo} onChange={handleChangeCourse} />
             </div>
             <button type="submit">Enviar</button>
           </form>
@@ -86,8 +101,8 @@ const Test = () => {
           <h2>Segundo formulario:</h2>
           <form onSubmit={handleSubmitLevel}>
             <div>
-              <label htmlFor="titleLevel">Nombre del curso2:</label>
-              <input type="text" id="titleLevel" name="titleLevel" value={formData.titleLevel} onChange={handleChange} />
+              <label htmlFor="title">Nombre del Nivel:</label>
+              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
             </div>
             <button type="submit">Enviar</button>
           </form>
