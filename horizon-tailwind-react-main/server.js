@@ -11,14 +11,34 @@ app.use(cors()); // Usa cors para habilitar CORS en tu servidor
 app.post('/guardar-datos-course', async (req, res) => {
   try {
     const { title, photo } = req.body;
-    const newData = { title, photo };
 
-    console.log(newData)
-
+    // Leer los datos actuales del archivo JSON
     const currentData = await fs.readFile('courses.json', 'utf8');
     const jsonData = JSON.parse(currentData);
+
+    // Calcular el nuevo ID
+    let id;
+    if (jsonData.length > 0) {
+      // Si hay cursos existentes, el nuevo ID es el ID del último curso + 1
+      const lastCourse = jsonData[jsonData.length - 1];
+      id = lastCourse.id + 1;
+    } else {
+      // Si no hay cursos existentes, el ID del nuevo curso es 1
+      id = 1;
+    }
+
+    // Crear el nuevo objeto de curso con el ID generado
+    const levels = [];
+    const newData = { id, title, photo, levels };
+
+    console.log(newData);
+
+    // Agregar el nuevo curso al array de cursos
     jsonData.push(newData);
+
+    // Escribir los datos actualizados en el archivo JSON
     await fs.writeFile('courses.json', JSON.stringify(jsonData, null, 2));
+
     res.sendStatus(200);
   } catch (error) {
     console.error('Error al guardar los datos:', error);
