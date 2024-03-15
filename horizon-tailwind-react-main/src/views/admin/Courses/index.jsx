@@ -65,7 +65,7 @@ const Test = () => {
   return (
     <div>
       <div className="mt-3 w-[335px]">
-      <Link key={3} to={"/Sub/NewCourse"}>
+      <Link key={3} to={"/admin/NewCourse"}>
         <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
         </Link>
       </div>
@@ -80,7 +80,7 @@ const Test = () => {
 
         <CourseCard text="Course Card 1" progress={90} />
 
-        <Link key={3} to={"/Sub/NewCourse"}>
+        <Link key={3} to={"/admin/NewCourse"}>
         <CourseCardPlus />
         </Link>
       </div>
