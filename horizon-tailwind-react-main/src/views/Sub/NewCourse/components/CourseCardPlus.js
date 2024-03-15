@@ -27,7 +27,7 @@ const Frame = styled.div`
   width: 80px; /* Tamaño pequeño */
 `;
 
-const CourseCardPlus = ({ text, clickhandler, foto = add }) => {
+const CourseCardPlus = ({ text, onClick, foto = add }) => {
   const [isViewVisible, setViewVisible] = useState(true);
 
   const toggleView = () => {
@@ -35,7 +35,7 @@ const CourseCardPlus = ({ text, clickhandler, foto = add }) => {
   };
 
   return (
-    <CourseCardWrapper onClick={clickhandler} className="!bg-white dark:!bg-navy-700">
+    <CourseCardWrapper onClick={onClick} className="!bg-white dark:!bg-navy-700">
       <Frame foto={foto} />
     </CourseCardWrapper>
   );
@@ -43,6 +43,7 @@ const CourseCardPlus = ({ text, clickhandler, foto = add }) => {
 
 CourseCardPlus.propTypes = {
   text: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default CourseCardPlus;

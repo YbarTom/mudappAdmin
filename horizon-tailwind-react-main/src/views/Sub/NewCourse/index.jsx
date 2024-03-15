@@ -2,24 +2,12 @@ import React, { useState } from 'react';
 import CourseCard from "./components/CourseCard";
 import { ButtonLogOut } from "./components/randomButton";
 import CourseCardPlus from "./components/CourseCardPlus";
-import routes from 'routes';
-import { Link } from "react-router-dom";
 
 const Test = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    photo: '',
-    levels: []
+    titleCourse: '',
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
-
-  const handleChangeCourse = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleChangeCourseLevels = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,11 +22,7 @@ const Test = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          title: formData.title,
-          photo: formData.photo,
-          levels: formData.levels // Aquí estamos enviando directamente el array de niveles
-        })
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
@@ -52,7 +36,7 @@ const Test = () => {
     }
   };
 
-  const handleSubmitLevel = async (e) => {
+  const handleSubmitLevel= async (e) => {
     e.preventDefault();
 
     try {
@@ -74,29 +58,16 @@ const Test = () => {
       console.error('Error al enviar los datos:', error);
     }
   };
-  
 
   return (
     <div>
       <div className="mt-3 w-[335px]">
-      <Link key={3} to={"/Sub/NewCourse"}>
         <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
-        </Link>
       </div>
       {/* Charts */}
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
         <CourseCard text="Course Card 1" progress={90} />
-        <CourseCard text="Course Card 1" progress={90} />
-
-        <CourseCard text="Course Card 1" progress={90} />
-
-        <CourseCard text="Course Card 1" progress={90} />
-
-        <CourseCard text="Course Card 1" progress={90} />
-
-        <Link key={3} to={"/Sub/NewCourse"}>
-        <CourseCardPlus />
-        </Link>
+        
       </div>
 
       {/* Tables & Charts */}
@@ -108,16 +79,8 @@ const Test = () => {
               <h2>Introduce tus datos:</h2>
               <form onSubmit={handleSubmitCourse}>
                 <div>
-                  <label htmlFor="title">Nombre del curso:</label>
-                  <input type="text" id="title" name="title" value={formData.title} onChange={handleChangeCourse} />
-                </div>
-                <div>
-                  <label htmlFor="photo">Foto:</label>
-                  <input type="text" id="photo" name="photo" value={formData.photo} onChange={handleChangeCourse} />
-                </div>
-                <div>
-                  <label htmlFor="levels">Número de niveles:</label>
-                  <input type="text" id="levels" name="levels" value={formData.levels} onChange={handleChangeCourseLevels} />
+                  <label htmlFor="titleCourse">Nombre del curso:</label>
+                  <input type="text" id="titleCourse" name="titleCourse" value={formData.titleCourse} onChange={handleChange} />
                 </div>
                 <button type="submit">Enviar</button>
               </form>

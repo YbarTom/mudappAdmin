@@ -26,10 +26,10 @@ white-space: nowrap;
 width: fit-content;
 `;
 
-export const ButtonLogOut = ({text,clickhandler}) => {
+export const ButtonLogOut = ({text,}) => {
     return (
         <MyButton className="!bg-white dark:!bg-navy-700">
-            <TextWrapper className="text-navy-700 dark:text-white" onClick={clickhandler}>{text}</TextWrapper>
+            <TextWrapper className="text-navy-700 dark:text-white">{text}</TextWrapper>
         </MyButton>
     );
 };
