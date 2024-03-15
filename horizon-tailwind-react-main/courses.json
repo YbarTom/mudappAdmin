@@ -1,5 +1,31 @@
 [
   {
-    "titleCourse": "Programacio 1"
+    "title": "a",
+    "photo": "a",
+    "levels": "a"
+  },
+  {
+    "title": "a",
+    "photo": "a",
+    "levels": "a"
+  },
+  {
+    "title": "a",
+    "photo": "a",
+    "levels": [
+      null
+    ]
+  },
+  {
+    "title": "a",
+    "photo": "a",
+    "levels": [
+      5555
+    ]
+  },
+  {
+    "title": "a",
+    "photo": "a",
+    "levels": "a"
   }
 ]

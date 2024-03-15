@@ -4,9 +4,19 @@ import { ButtonLogOut } from "./components/randomButton";
 import CourseCardPlus from "./components/CourseCardPlus";
 const Test = () => {
   const [formData, setFormData] = useState({
-    titleCourse: '',
+    title: '',
+    photo: '',
+    levels: []
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
+
+  const handleChangeCourse = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeCourseLevels = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +31,11 @@ const Test = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          title: formData.title,
+          photo: formData.photo,
+          levels: formData.levels // Aquí estamos enviando directamente el array de niveles
+        })
       });
 
       if (response.ok) {
@@ -35,7 +49,7 @@ const Test = () => {
     }
   };
 
-  const handleSubmitLevel= async (e) => {
+  const handleSubmitLevel = async (e) => {
     e.preventDefault();
 
     try {
@@ -74,7 +88,7 @@ const Test = () => {
 
         <CourseCard text="Course Card 1" progress={90} />
 
-        <CourseCardPlus/>
+        <CourseCardPlus />
       </div>
 
       {/* Tables & Charts */}
@@ -86,8 +100,16 @@ const Test = () => {
               <h2>Introduce tus datos:</h2>
               <form onSubmit={handleSubmitCourse}>
                 <div>
-                  <label htmlFor="titleCourse">Nombre del curso:</label>
-                  <input type="text" id="titleCourse" name="titleCourse" value={formData.titleCourse} onChange={handleChange} />
+                  <label htmlFor="title">Nombre del curso:</label>
+                  <input type="text" id="title" name="title" value={formData.title} onChange={handleChangeCourse} />
+                </div>
+                <div>
+                  <label htmlFor="photo">Foto:</label>
+                  <input type="text" id="photo" name="photo" value={formData.photo} onChange={handleChangeCourse} />
+                </div>
+                <div>
+                  <label htmlFor="levels">Número de niveles:</label>
+                  <input type="text" id="levels" name="levels" value={formData.levels} onChange={handleChangeCourseLevels} />
                 </div>
                 <button type="submit">Enviar</button>
               </form>
