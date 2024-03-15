@@ -10,8 +10,8 @@ const Test = () => {
   return (
     <div>
       <div className="mt-3 w-[335px]">
-        <Link key={3} to={"/admin/NewCourse"}>
-          <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
+      <Link key={3} to={"/subdirectory/NewCourse"}>
+        <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
         </Link>
       </div>
       {/* Charts */}
@@ -25,8 +25,8 @@ const Test = () => {
 
         <CourseCard text="Course Card 1" progress={90} />
 
-        <Link key={3} to={"/admin/NewCourse"}>
-          <CourseCardPlus />
+        <Link key={3} to={"/subdirectory/NewCourse"}>
+        <CourseCardPlus />
         </Link>
       </div>
 
