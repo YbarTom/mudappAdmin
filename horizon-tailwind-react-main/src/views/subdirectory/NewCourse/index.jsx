@@ -9,6 +9,13 @@ const Test = () => {
     title: '',
     idCourse: 0,
   });
+  const [formDataLesson, setFormDataLesson] = useState({
+    title: '',
+  });
+  
+  const [formDataFlashCard, setFormDataFlashCard] = useState({
+    title: '',
+  });
   const [showSecondForm, setShowSecondForm] = useState(false);
   const [showThirdForm, setShowThirdForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
   const [showFourForm, setShowFourForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
@@ -21,6 +28,13 @@ const Test = () => {
     setFormDataLevel({ ...formDataLevel, [e.target.name]: e.target.value });
   };
 
+  const handleChangeLesson = (e) => {
+    setFormDataLesson({ ...formDataLesson, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeFlashCard = (e) => {
+    setFormDataFlashCard({ ...formDataFlashCard, [e.target.name]: e.target.value });
+  };
   const handleSubmitCourse = async (e) => {
     e.preventDefault();
 
@@ -119,7 +133,7 @@ const Test = () => {
           <form onSubmit={handleSubmitLesson}>
             <div>
               <label htmlFor="title">Nombre de la lesson:</label>
-              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+              <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
             </div>
             <button type="submit">Enviar</button>
           </form>
@@ -130,10 +144,10 @@ const Test = () => {
       {showFourForm && ( // Mostrar el tercer formulario si showThirdForm es verdadero
         <div>
           <h2>Cuarto formulario:</h2>
-          <form onSubmit={handleSubmitLevel}>
+          <form onSubmit={handleSubmitFlashCard}>
             <div>
               <label htmlFor="title">Nombre de la lesson:</label>
-              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+              <input type="text" id="title" name="title" value={formDataFlashCard.title} onChange={handleChangeFlashCard} />
             </div>
             <button type="submit">Enviar</button>
           </form>
