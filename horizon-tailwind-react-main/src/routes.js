@@ -7,7 +7,7 @@ import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
 import Courses from "views/admin/Courses";
-import NewCourse from "views/Sub/NewCourse";
+import NewCourse from "views/admin/NewCourse";
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
@@ -73,7 +73,7 @@ const routes = [
   },
   {
     name: "NewCourse",
-    layout: "/Sub",
+    layout: "/admin",
     path: "NewCourse",
     icon: <MdHome className="h-6 w-6" />,
     component: <NewCourse />,
