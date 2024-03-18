@@ -101,7 +101,10 @@ const Test = () => {
   }, [formDataLevel]);
 
   return (
-    <div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+      <div></div>
+      <div></div>
+      <div>
       {!showSecondForm && (
         <div>
           <h2>Introduce tus datos:</h2>
@@ -157,6 +160,7 @@ const Test = () => {
           {/* Aquí colocarías el contenido y el formulario del tercer paso */}
         </div>
       )}
+      </div>
     </div>
   );
 };
