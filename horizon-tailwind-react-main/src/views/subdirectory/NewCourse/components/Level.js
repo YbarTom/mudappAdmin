@@ -19,6 +19,12 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
             <div>
                 <Lesson title="Derivades 1" status="locked" />
                 <FlashCardBox/>
+                <FlashCardBox/>
+
+                <FlashCardBox/>
+
+                <FlashCardBox/>
+
                 <LessonPlus/>
                 {/* Aquí puedes agregar más Lesson si es necesario */}
             </div>
