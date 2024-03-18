@@ -17,7 +17,7 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
      {showLessons && (
             <div>
                 <Lesson title="Lección 1" status="locked" />
-                <Lesson title="Lección 2" status="locked" />
+                <Lesson status="plus" />
                 {/* Aquí puedes agregar más Lesson si es necesario */}
             </div>
         )}
