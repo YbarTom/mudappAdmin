@@ -15,6 +15,7 @@ const StyledCourseSection = styled.div`
   padding: 20px  20px 15px;
   position: relative;
   width: 100%;
+  margin-bottom: 15px;
 `;
 
 const Frame = styled.div`
