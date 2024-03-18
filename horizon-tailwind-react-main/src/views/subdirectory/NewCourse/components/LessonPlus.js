@@ -5,6 +5,7 @@ import LessonIconPlus from "./LessonIconPlus";
 
 
 const LessonContainer = styled.div`
+margin-top: 10px;
   align-items: center;
   display: inline-flex;
   gap: 24px;
