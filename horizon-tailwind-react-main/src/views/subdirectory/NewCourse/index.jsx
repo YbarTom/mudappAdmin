@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import CourseSection from './components/CourseSection';
+import Lesson from './components/Lesson';
 
 const Test = () => {
   const [formDataCourse, setFormDataCourse] = useState({
@@ -101,9 +103,12 @@ const Test = () => {
   }, [formDataLevel]);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-      <div></div>
-      <div></div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
+      <div>
+        <CourseSection title="Curso 1" parte="PARTE 1" status="available" />
+        <Lesson title="Lección 1" status="locked"  />
+      </div>
+      <div> </div>
       <div>
       {!showSecondForm && (
         <div>
