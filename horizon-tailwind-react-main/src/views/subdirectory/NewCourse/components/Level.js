@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Lesson from "./Lesson";
 import CourseSection from "./CourseSection";
 import LessonPlus from "./LessonPlus";
+import FlashCardBox from "./FlashCardBox";
 const Level = ({ title, parte, status, className, id , onClickArrow}) => {
     const [showLessons, setShowLessons] = useState(false);
 
@@ -17,6 +18,7 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
      {showLessons && (
             <div>
                 <Lesson title="Derivades 1" status="locked" />
+                <FlashCardBox/>
                 <LessonPlus/>
                 {/* Aquí puedes agregar más Lesson si es necesario */}
             </div>
