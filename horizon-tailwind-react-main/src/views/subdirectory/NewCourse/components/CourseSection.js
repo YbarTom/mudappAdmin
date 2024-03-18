@@ -5,7 +5,7 @@ import { Lock032 } from "../icons/Lock032/Lock032";
 import openBook from "assets/img/ColleBree/libro-abierto.png";
 import arrowDown from "assets/img/ColleBree/ArrowDown.png";
 import arrowUp from "assets/img/ColleBree/ArrowDown2.png";
-
+import Lesson from "./Lesson";
 const StyledCourseSection = styled.div`
   align-items: flex-start;
   border-radius: 16px;
@@ -80,16 +80,20 @@ const Title = styled.p`
 
 const CourseSection = ({ title, parte, status, className, id , onClickArrow}) => {
   const [arrowVisible, setArrowVisible] = useState(true); // Estado para controlar qué flecha se muestra
+  const [showLessons, setShowLessons] = useState(false);
 
  
 
   // Función para alternar entre las flechas
   const toggleArrow = () => {
     setArrowVisible(!arrowVisible);
+    setShowLessons(!showLessons); // Alternar la visibilidad de los Lesson
     onClickArrow(); // Llama a la función onClickArrow proporcionada por el componente padre
-  };
+};
+
 
   return (
+    <div>
     <StyledCourseSection locked={status === "locked"}>
       <Frame>
                 <Group>
@@ -112,6 +116,14 @@ const CourseSection = ({ title, parte, status, className, id , onClickArrow}) =>
       </Frame>
       <Title>{title}</Title>
     </StyledCourseSection>
+    {showLessons && (
+            <div>
+                <Lesson title="Lección 1" status="locked" />
+                <Lesson title="Lección 2" status="locked" />
+                {/* Aquí puedes agregar más Lesson si es necesario */}
+            </div>
+        )}
+    </div>
   );
 };
 

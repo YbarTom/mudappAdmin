@@ -106,8 +106,7 @@ const Test = () => {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
       <div>
         <CourseSection title="Curso 1" parte="PARTE 1" status="available" />
-        <Lesson title="Lección 1" status="locked"  />
-        <Lesson title="Lección 2" status="locked"  />
+        
 
       </div>
       <div> </div>
