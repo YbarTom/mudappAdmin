@@ -8,6 +8,7 @@ const Test = () => {
   const [formDataLevel, setFormDataLevel] = useState({
     title: '',
     idCourse: 0,
+    part: 0
   });
   const [formDataLesson, setFormDataLesson] = useState({
     title: '',
@@ -17,8 +18,8 @@ const Test = () => {
     title: '',
   });
   const [showSecondForm, setShowSecondForm] = useState(false);
-  const [showThirdForm, setShowThirdForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
-  const [showFourForm, setShowFourForm] = useState(false); // Nuevo estado para controlar la visibilidad del tercer formulario
+  const [showThirdForm, setShowThirdForm] = useState(false);
+  const [showFourForm, setShowFourForm] = useState(false);
 
   const handleChangeCourse = (e) => {
     setFormDataCourse({ ...formDataCourse, [e.target.name]: e.target.value });
@@ -75,6 +76,8 @@ const Test = () => {
         },
         body: JSON.stringify({
           title: formDataLevel.title,
+          idCourse: formDataLevel.idCourse,
+          part: formDataLevel.part
         })
       });
 
@@ -128,6 +131,10 @@ const Test = () => {
             <div>
               <label htmlFor="title">Nombre del Nivel:</label>
               <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+            </div>
+            <div>
+              <label htmlFor="part">Parte:</label>
+              <input type="number" id="part" name="part" value={formDataLevel.part} onChange={handleChangeLevel} />
             </div>
             <button type="submit">Enviar</button>
           </form>

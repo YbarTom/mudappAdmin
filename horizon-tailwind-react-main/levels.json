@@ -1,8 +1,9 @@
 [
   {
-    "title": "t"
-  },
-  {
-    "title": "a"
+    "id": 1,
+    "idCourse": 1,
+    "part": "1",
+    "title": "nivell1",
+    "lessons": []
   }
 ]
