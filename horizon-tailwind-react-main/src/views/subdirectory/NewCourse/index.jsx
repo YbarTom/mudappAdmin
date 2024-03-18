@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import CourseSection from './components/CourseSection';
+import Lesson from './components/Lesson';
+import CourseSectionPlus from './components/CoursSectionPlus';
+
 import Level from './components/Level';
 
 const Test = () => {
@@ -105,7 +109,7 @@ const Test = () => {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
       <div>
         <Level/>
-        
+        <CourseSectionPlus></CourseSectionPlus>
 
       </div>
       <div> </div>
