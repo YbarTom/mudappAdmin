@@ -8,30 +8,32 @@ import arrowDown from "assets/img/ColleBree/ArrowDownGrey.png";
 
 const LessonContainer = styled.div`
   align-items: center;
-  display: inline-flex;
+  display: flex;
   gap: 24px;
   position: relative;
   width: 100%;
+`;
+
+const ArrowImage = styled.img`
+  margin-left: auto; /* Alinea la flecha a la derecha */
+  margin-right: 20px; /* Alinea la flecha a la derecha */
 `;
 
 const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
   const [arrowVisible, setArrowVisible] = useState(true); // Estado para controlar qué flecha se muestra
   const toggleArrow = () => {
     setArrowVisible(!arrowVisible);
-  
   };
+
   return (
-    <LessonContainer >
+    <LessonContainer>
       <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson}/>
       <LessonIntroduction title={title} status={status} />
-       
       {arrowVisible ? (
-            <img src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
-          ) : (
-            <img src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
-          )}
-        
-      
+        <ArrowImage src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
+      ) : (
+        <ArrowImage src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
+      )}
     </LessonContainer>
   );
 };

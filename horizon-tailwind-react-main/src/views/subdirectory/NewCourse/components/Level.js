@@ -13,10 +13,10 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
 
   return (
     <div>
-     <CourseSection title="Curso 1" parte="PARTE 1" status="available" onClickArrow={()=>handleClickArrow()}/>
+     <CourseSection title="Matematiques 1" parte="PARTE 1" status="available" onClickArrow={()=>handleClickArrow()}/>
      {showLessons && (
             <div>
-                <Lesson title="Lección 1" status="locked" />
+                <Lesson title="Derivades 1" status="locked" />
                 <LessonPlus/>
                 {/* Aquí puedes agregar más Lesson si es necesario */}
             </div>
