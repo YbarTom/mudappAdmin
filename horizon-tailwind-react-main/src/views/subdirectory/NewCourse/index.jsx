@@ -3,6 +3,7 @@ import CourseSection from './components/CourseSection';
 import Lesson from './components/Lesson';
 import CourseSectionPlus from './components/CoursSectionPlus';
 
+import Level from './components/Level';
 
 const Test = () => {
   const [formDataCourse, setFormDataCourse] = useState({
@@ -107,7 +108,7 @@ const Test = () => {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
       <div>
-        <CourseSection title="Curso 1" parte="PARTE 1" status="available" />
+        <Level/>
         <CourseSectionPlus></CourseSectionPlus>
 
       </div>
