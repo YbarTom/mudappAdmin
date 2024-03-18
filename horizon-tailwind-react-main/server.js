@@ -142,6 +142,97 @@ app.post('/guardar-datos-lesson', async (req, res) => {
   }
 });
 
+app.post('/guardar-datos-flashcard', async (req, res) => {
+  try {
+    const { title, idLesson, subtitle, options, type} = req.body;
+    checkFlashCard(type, options)
+
+  } catch (error) {
+    console.error('Error al guardar datos flashcard', error);
+    res.sendStatus(500);
+  }
+})
+
+async function checkFlashCard(type, options) {
+
+  var correctValues
+  var newOptions
+
+  switch (type) {
+    case "TrueFalse":
+      for(let i=0; i < options.length; i++){
+        correctValues[i].idOption = options[i].idOption
+        correctValues[i].value = options[i].value
+        newOptions[i].idOption = options[i].idOption
+        newOptions[i].text = options[i].text
+      }
+    break;
+    case "MultipleChoice":
+      for(let i=0; i<options.length; i++){
+        if(options[i].value===true){
+          correctValues.push(options[i].idOption)
+        }
+        newOptions[i].idOption=options[i].idOption
+        newOptions[i].text=options[i].text
+      }
+    break;
+    case "LessonComplete":
+
+    break;
+    case "LessonRelate":
+
+    break;
+  }
+}
+
+app.get('/courses', async (req, res) => {
+  try {
+    // Lee el contenido del archivo courses.json
+    const data = await fs.readFile('courses.json', 'utf8');
+    
+    // Parsea el contenido del archivo JSON
+    const courses = JSON.parse(data);
+    
+    // Devuelve los cursos como respuesta
+    res.json(courses);
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
+app.get('/levels', async (req, res) => {
+  try {
+    // Lee el contenido del archivo courses.json
+    const data = await fs.readFile('levels.json', 'utf8');
+    
+    // Parsea el contenido del archivo JSON
+    const levels = JSON.parse(data);
+    
+    // Devuelve los cursos como respuesta
+    res.json(levels);
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
+app.get('/lessons', async (req, res) => {
+  try {
+    // Lee el contenido del archivo courses.json
+    const data = await fs.readFile('lessons.json', 'utf8');
+    
+    // Parsea el contenido del archivo JSON
+    const lessons = JSON.parse(data);
+    
+    // Devuelve los cursos como respuesta
+    res.json(lessons);
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
