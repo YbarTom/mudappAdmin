@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { LessonStatusIcon1 } from "../icons/LessonStatusIcon1/LessonStatusIcon1";
 import locked from "assets/img/ColleBree/Locked.png";
 import Completed from "assets/img/ColleBree/LessonCompleted.png";
-import plus from "assets/img/ColleBree/add.png";
 // Estilizar el contenedor del icono para aplicar un tamaño fijo y centrar el contenido
 const IconContainer = styled.div`
   width: 48px; /* Cambia este valor según tus necesidades */
@@ -28,10 +27,7 @@ const LessonIcon = ({ status, progress, ruta, idLesson }) => {
     iconComponent = <img src={locked} alt="Locked Icon" />;
   } else if (status === "completed") {
     iconComponent = <img src={Completed} alt="Completed Icon" />;
-  }else if (status === "plus"){
-    iconComponent = <img src={plus} alt="plus Icon" />;
   }
-
   return (
     <IconContainer >
       {iconComponent}
@@ -40,7 +36,7 @@ const LessonIcon = ({ status, progress, ruta, idLesson }) => {
 };
 
 LessonIcon.propTypes = {
-  status: PropTypes.oneOf(["available", "locked", "completed","plus"]),
+  status: PropTypes.oneOf(["available", "locked", "completed"]),
   progress: PropTypes.number,
   ruta: PropTypes.string, // Debería ser una cadena, ya que es la ruta que se pasará a router.push
   idLesson: PropTypes.number

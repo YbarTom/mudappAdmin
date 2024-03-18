@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Lesson from "./Lesson";
 import CourseSection from "./CourseSection";
-
+import LessonPlus from "./LessonPlus";
 const Level = ({ title, parte, status, className, id , onClickArrow}) => {
     const [showLessons, setShowLessons] = useState(false);
 
@@ -17,7 +17,7 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
      {showLessons && (
             <div>
                 <Lesson title="Lección 1" status="locked" />
-                <Lesson status="plus" />
+                <LessonPlus/>
                 {/* Aquí puedes agregar más Lesson si es necesario */}
             </div>
         )}

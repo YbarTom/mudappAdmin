@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LessonIcon from "./LessonIcon";
 import LessonIntroduction from "./LessonIntroduction";
+import arrowUp from "assets/img/ColleBree/ArrowUpGrey.png";
+import arrowDown from "assets/img/ColleBree/ArrowDownGrey.png";
 
 const LessonContainer = styled.div`
   align-items: center;
@@ -13,10 +15,23 @@ const LessonContainer = styled.div`
 `;
 
 const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
+  const [arrowVisible, setArrowVisible] = useState(true); // Estado para controlar qué flecha se muestra
+  const toggleArrow = () => {
+    setArrowVisible(!arrowVisible);
+  
+  };
   return (
     <LessonContainer >
       <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson}/>
       <LessonIntroduction title={title} status={status} />
+       
+      {arrowVisible ? (
+            <img src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
+          ) : (
+            <img src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
+          )}
+        
+      
     </LessonContainer>
   );
 };
