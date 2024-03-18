@@ -5,6 +5,7 @@ import LessonIcon from "./LessonIcon";
 import LessonIntroduction from "./LessonIntroduction";
 import arrowUp from "assets/img/ColleBree/ArrowUpGrey.png";
 import arrowDown from "assets/img/ColleBree/ArrowDownGrey.png";
+import FlashCardBox from "./FlashCardBox";
 
 const LessonContainer = styled.div`
   align-items: center;
@@ -26,6 +27,7 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
   };
 
   return (
+    <div>
     <LessonContainer>
       <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson}/>
       <LessonIntroduction title={title} status={status} />
@@ -35,6 +37,13 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
         <ArrowImage src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
       )}
     </LessonContainer>
+    {!arrowVisible && <div><FlashCardBox/>
+                <FlashCardBox/>
+
+                <FlashCardBox/>
+
+                <FlashCardBox/></div>}
+    </div>
   );
 };
 
