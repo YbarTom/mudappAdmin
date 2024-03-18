@@ -92,6 +92,9 @@ const Test = () => {
   const handleSubmitLesson = async (e) => {
     setShowFourForm(true);
   }
+  const handleSubmitFlashCard= async (e) => {
+    setShowFourForm(true);
+  }
   useEffect(() => {
     // Este efecto se activa cada vez que formDataLevel cambia
     console.log(formDataLevel);
