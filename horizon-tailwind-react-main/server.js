@@ -75,7 +75,8 @@ app.post('/guardar-datos-level', async (req, res) => {
 
     // Crear el nuevo objeto de nivel
     var lessons = []
-    const newLevel = { id, idCourse, part, title, lessons };
+    var status = 0
+    const newLevel = { id, idCourse, part, title, status, lessons };
 
     // Agregar el nuevo nivel al array de niveles del curso encontrado
     course.levels.push(id);
@@ -85,6 +86,53 @@ app.post('/guardar-datos-level', async (req, res) => {
 
     // Escribir los datos del nuevo nivel
     await fs.writeFile('levels.json', JSON.stringify([...levels, newLevel], null, 2));
+
+    res.status(200).json({ id });
+
+  } catch (error) {
+    console.error('Error al guardar los datos:', error);
+    res.sendStatus(500);
+  }
+});
+
+app.post('/guardar-datos-lesson', async (req, res) => {
+  try {
+    const { title, idLevel } = req.body;
+
+    // Leer los datos actuales del archivo JSON de cursos
+    const levelsData = await fs.readFile('levels.json', 'utf8');
+    const levels = JSON.parse(levelsData);
+
+    // Buscar el curso correspondiente al idCourse
+    const level = levels.find(level => level.id === idLevel);
+    if (!level) {
+      return res.status(404).json({ error: 'Level no encontrado' });
+    }
+
+    // Calcular el nuevo ID para el nivel
+    const lessonsData = await fs.readFile('lessons.json', 'utf8');
+    const lessons = JSON.parse(lessonsData);
+    let id;
+    if (lessons.length > 0) {
+      const lastlesson = lessons[lessons.length - 1];
+      id = lastlesson.id + 1;
+    } else {
+      id = 1;
+    }
+
+    // Crear el nuevo objeto de nivel
+    var flashcards = []
+    var status = 0
+    const newLesson = { id, idLevel, title, status, flashcards };
+
+    // Agregar el nuevo nivel al array de niveles del curso encontrado
+    level.lessons.push(id);
+
+    // Escribir los datos actualizados de los cursos
+    await fs.writeFile('levels.json', JSON.stringify(levels, null, 2));
+
+    // Escribir los datos del nuevo nivel
+    await fs.writeFile('lessons.json', JSON.stringify([...lessons, newLesson], null, 2));
 
     res.status(200).json({ id });
 

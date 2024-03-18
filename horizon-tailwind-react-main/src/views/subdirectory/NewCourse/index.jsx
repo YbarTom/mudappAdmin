@@ -12,6 +12,7 @@ const Test = () => {
   });
   const [formDataLesson, setFormDataLesson] = useState({
     title: '',
+    idLevel: 0
   });
   
   const [formDataFlashCard, setFormDataFlashCard] = useState({
@@ -81,6 +82,12 @@ const Test = () => {
         })
       });
 
+      const data = await response.json();
+      console.log('ID del nuevo level:', data.id);
+
+      // Actualizar el estado formDataLevel con el ID del curso recién guardado
+      setFormDataLesson({ ...formDataLesson, idLevel: data.id });
+
       if (response.ok) {
         console.log('Datos guardados exitosamente level');
         setShowThirdForm(true); // Mostrar el tercer formulario después de enviar el segundo
@@ -93,15 +100,33 @@ const Test = () => {
   };
 
   const handleSubmitLesson = async (e) => {
-    setShowFourForm(true);
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3001/guardar-datos-lesson', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: formDataLesson.title,
+          idLevel: formDataLesson.idLevel
+        })
+      });
+
+      if (response.ok) {
+        console.log('Datos guardados exitosamente lesson');
+        setShowFourForm(true); // Mostrar el tercer formulario después de enviar el segundo
+      } else {
+        console.error('Error al guardar datos.');
+      }
+    } catch (error) {
+      console.error('Error al enviar los datos:', error);
+    }
   }
   const handleSubmitFlashCard= async (e) => {
     setShowFourForm(true);
   }
-  useEffect(() => {
-    // Este efecto se activa cada vez que formDataLevel cambia
-    console.log(formDataLevel);
-  }, [formDataLevel]);
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
