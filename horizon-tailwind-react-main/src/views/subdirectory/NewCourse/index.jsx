@@ -147,15 +147,24 @@ const Test = () => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
-      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
-        <Level/>
-        <Level/>
-        <Level/>
-        <Level/>
-        <Level/>
-        <Level/>
-        <CourseSectionPlus></CourseSectionPlus>
-      </div>
+      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
+  <style>
+    {`
+      /* Para navegadores webkit (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    `}
+  </style>
+  <Level/>
+  <Level/>
+  <Level/>
+  <Level/>
+  <Level/>
+  <Level/>
+  <CourseSectionPlus></CourseSectionPlus>
+</div>
+
       <div> </div>
       <div>
       {!showSecondForm && (
