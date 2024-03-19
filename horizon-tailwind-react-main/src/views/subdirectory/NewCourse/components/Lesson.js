@@ -6,6 +6,7 @@ import LessonIntroduction from "./LessonIntroduction";
 import arrowUp from "assets/img/ColleBree/ArrowUpGrey.png";
 import arrowDown from "assets/img/ColleBree/ArrowDownGrey.png";
 import FlashCardBox from "./FlashCardBox";
+import FlashCardBoxPlus from "./FlashCardBoxPlus";
 
 const LessonContainer = styled.div`
   align-items: center;
@@ -42,6 +43,7 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson }) => {
         <FlashCardBox type="relate" title="Relate"/>
         <FlashCardBox type="trueFalse" title="True False"/>
         <FlashCardBox type="complete" title="Complete"/>
+        <FlashCardBoxPlus/>
         </div>}
     </div>
   );
