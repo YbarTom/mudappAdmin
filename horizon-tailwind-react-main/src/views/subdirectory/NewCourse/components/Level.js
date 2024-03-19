@@ -4,26 +4,27 @@ import Lesson from "./Lesson";
 import CourseSection from "./CourseSection";
 import LessonPlus from "./LessonPlus";
 import FlashCardBox from "./FlashCardBox";
-const Level = ({ title, parte, status, className, id , onClickArrow}) => {
-    const [showLessons, setShowLessons] = useState(false);
+const Level = ({ title, parte, status, className, id, onClickArrow, lessons }) => {
+  const [showLessons, setShowLessons] = useState(false);
 
-    const handleClickArrow = () => {
-        setShowLessons(!showLessons);
-    };
+  const handleClickArrow = () => {
+    setShowLessons(!showLessons);
+  };
 
 
   return (
     <div>
-     <CourseSection title={title} parte={`Parte ${parte}`} status="available" onClickArrow={()=>handleClickArrow()}/>
-     {showLessons && (
-            <div>
-                <Lesson title="Derivades 1" status="locked" />
-                
+      <CourseSection title={title} parte={`Parte ${parte}`} status="available" onClickArrow={() => handleClickArrow()} />
+      {showLessons && (
+        <div>
+          {lessons.map((level, index) => (
+            <Lesson key={index} title={level.title} parte={level.part} />
+          ))}
 
-                <LessonPlus/>
-                {/* Aquí puedes agregar más Lesson si es necesario */}
-            </div>
-        )}
+          <LessonPlus />
+          {/* Aquí puedes agregar más Lesson si es necesario */}
+        </div>
+      )}
     </div>
   );
 };

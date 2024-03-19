@@ -5,6 +5,7 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 
 const Test = () => {
   const [levels, setLevels] = useState([]);
+  const [lessons, setLessons] = useState([]);
 
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
@@ -124,6 +125,12 @@ const Test = () => {
       });
 
       if (response.ok) {
+        var lesson = {
+          title: formDataLesson.title,
+          part: formDataLesson.part
+        };
+  
+        setLessons([...lessons, lesson]);
         console.log('Datos guardados exitosamente lesson');
         setShowFourForm(true);
       } else {
@@ -141,7 +148,7 @@ const Test = () => {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {levels.map((level, index) => (
-          <Level key={index} title={level.title} parte={level.part}/>
+          <Level key={index} title={level.title} parte={level.part} lessons={lessons}/>
         ))}
         <CourseSectionPlus></CourseSectionPlus>
       </div>

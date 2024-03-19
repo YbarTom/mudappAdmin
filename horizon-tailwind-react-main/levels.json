@@ -139,5 +139,23 @@
     "title": "a",
     "status": 0,
     "lessons": []
+  },
+  {
+    "id": 18,
+    "idCourse": 18,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 19,
+    "idCourse": 19,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      3
+    ]
   }
 ]
