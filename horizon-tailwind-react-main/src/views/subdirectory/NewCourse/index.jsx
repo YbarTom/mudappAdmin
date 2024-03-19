@@ -5,7 +5,7 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 
 import Level from './components/Level';
 
-const Test = () => {
+const Test = (courseTitle) => {
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
