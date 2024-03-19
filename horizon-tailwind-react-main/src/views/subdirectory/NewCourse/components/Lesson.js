@@ -20,7 +20,7 @@ const ArrowImage = styled.img`
   margin-right: 20px; /* Alinea la flecha a la derecha */
 `;
 
-const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
+const Lesson = ({ locked = true, title, status, progress, ruta, idLesson }) => {
   const [arrowVisible, setArrowVisible] = useState(true); // Estado para controlar qué flecha se muestra
   const toggleArrow = () => {
     setArrowVisible(!arrowVisible);
@@ -28,21 +28,21 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson}) => {
 
   return (
     <div>
-    <LessonContainer>
-      <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson}/>
-      <LessonIntroduction title={title} status={status} />
-      {arrowVisible ? (
-        <ArrowImage src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
-      ) : (
-        <ArrowImage src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
-      )}
-    </LessonContainer>
-    {!arrowVisible && <div><FlashCardBox/>
-                <FlashCardBox/>
-
-                <FlashCardBox/>
-
-                <FlashCardBox/></div>}
+      <LessonContainer>
+        <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson} />
+        <LessonIntroduction title={title} status={status} />
+        {arrowVisible ? (
+          <ArrowImage src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
+        ) : (
+          <ArrowImage src={arrowUp} alt="Locked Icon" onClick={toggleArrow} />
+        )}
+      </LessonContainer>
+      {!arrowVisible && <div>
+        <FlashCardBox type="multipleChoice" title="Multiple Choice"/>
+        <FlashCardBox type="relate" title="Relate"/>
+        <FlashCardBox type="trueFalse" title="True False"/>
+        <FlashCardBox type="complete" title="Complete"/>
+        </div>}
     </div>
   );
 };
