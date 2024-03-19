@@ -5,8 +5,7 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 
 import Level from './components/Level';
 
-const Test = (props) => {
-  const formData = props.location.state.formData;
+const Test = () => {
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
@@ -136,7 +135,6 @@ const Test = (props) => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
-      <p>{formDataCourse.title}</p>
       <div>
         <Level/>
         <CourseSectionPlus></CourseSectionPlus>
