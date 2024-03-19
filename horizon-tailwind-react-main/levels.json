@@ -88,6 +88,32 @@
     "part": "1",
     "title": "a",
     "status": 0,
+    "lessons": [
+      2
+    ]
+  },
+  {
+    "id": 12,
+    "idCourse": 12,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 13,
+    "idCourse": 13,
+    "part": "1",
+    "title": "z",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 14,
+    "idCourse": 14,
+    "part": "1",
+    "title": "a",
+    "status": 0,
     "lessons": []
   }
 ]
