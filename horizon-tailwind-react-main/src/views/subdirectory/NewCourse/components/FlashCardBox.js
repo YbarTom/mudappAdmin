@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import plus from 'assets/img/ColleBree/add.png';
 import multipleChoice from 'assets/img/ColleBree/multipleChoice.png';
 import LessonIntroduction from "./LessonIntroduction";
@@ -18,18 +19,26 @@ const StyledCourseSection = styled.div`
 `;
 
 const Image = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   margin-right: 20px; /* Espacio a la derecha de la imagen */
 `;
 
-const FlashCardBox = ({}) => {
-    return (
-        <StyledCourseSection>
-            <Image src={multipleChoice} alt="Multiple Choice Icon" />
-            <LessonIntroduction title="Multiple Choice" status="locked" />
-        </StyledCourseSection>
-    );
+const FlashCardBox = ({ type,title}) => {
+  return (
+    <StyledCourseSection>
+
+      {type === "relate" && <Image src={Relate} alt="Relate Icon" />}
+      {type === "trueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
+      {type === "complete" && <Image src={Complete} alt="Complete Icon" />}
+      {type === "multipleChoice" && <Image src={multipleChoice} alt="Multiple Choice Icon" />}
+
+      <LessonIntroduction title={title} status="locked" />
+    </StyledCourseSection>
+  );
 };
 
+FlashCardBox.propTypes = {
+  type: PropTypes.string
+}
 export default FlashCardBox;

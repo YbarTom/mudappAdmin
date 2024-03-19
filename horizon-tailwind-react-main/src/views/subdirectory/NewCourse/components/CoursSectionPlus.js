@@ -5,7 +5,7 @@ import plus from 'assets/img/ColleBree/add.png'
 const StyledCourseSection = styled.div`
   align-items: center; /* Cambiado a centrar verticalmente */
   border-radius: 16px;
-  background-color: rgba(106, 177, 226, 1);
+  background-color: white;
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   padding: 20px  20px 15px;
