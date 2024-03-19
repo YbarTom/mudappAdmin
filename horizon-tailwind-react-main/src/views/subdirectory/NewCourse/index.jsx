@@ -141,7 +141,7 @@ const Test = () => {
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {levels.map((level, index) => (
-          <Level key={index} text={level.title} />
+          <Level key={index} title={level.title} parte={level.part}/>
         ))}
         <CourseSectionPlus></CourseSectionPlus>
       </div>

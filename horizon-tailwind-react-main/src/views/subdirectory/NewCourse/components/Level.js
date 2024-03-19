@@ -14,7 +14,7 @@ const Level = ({ title, parte, status, className, id , onClickArrow}) => {
 
   return (
     <div>
-     <CourseSection title="Matematiques 1" parte="PARTE 1" status="available" onClickArrow={()=>handleClickArrow()}/>
+     <CourseSection title={title} parte={`Parte ${parte}`} status="available" onClickArrow={()=>handleClickArrow()}/>
      {showLessons && (
             <div>
                 <Lesson title="Derivades 1" status="locked" />
