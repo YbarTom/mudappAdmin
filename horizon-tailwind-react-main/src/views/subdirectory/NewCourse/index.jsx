@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import CourseSection from './components/CourseSection';
 import Lesson from './components/Lesson';
 import CourseSectionPlus from './components/CoursSectionPlus';
-
+import FlashCardBar from './components/FlashCardBar';
 import Level from './components/Level';
+import { color } from '@chakra-ui/system';
 
 const Test = () => {
 
@@ -22,7 +23,7 @@ const Test = () => {
     title: '',
     idLevel: 0
   });
-  
+
   const [formDataFlashCard, setFormDataFlashCard] = useState({
     title: '',
   });
@@ -141,92 +142,34 @@ const Test = () => {
       console.error('Error al enviar los datos:', error);
     }
   }
-  const handleSubmitFlashCard= async (e) => {
+  const handleSubmitFlashCard = async (e) => {
     setShowFourForm(true);
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
-  <style>
-    {`
+        <style>
+          {`
       /* Para navegadores webkit (Chrome, Safari) */
       ::-webkit-scrollbar {
         display: none;
       }
     `}
-  </style>
-  <Level/>
-  <Level/>
-  <Level/>
-  <Level/>
-  <Level/>
-  <Level/>
-  <CourseSectionPlus></CourseSectionPlus>
-</div>
-
-      <div> </div>
-      <div>
-      {!showSecondForm && (
-        <div>
-          <h2>Introduce tus datos:</h2>
-          <form onSubmit={handleSubmitCourse}>
-            <div>
-              <label htmlFor="title">Nombre del curso:</label>
-              <input type="text" id="title" name="title" value={formDataCourse.title} onChange={handleChangeCourse} />
-            </div>
-            <div>
-              <label htmlFor="photo">Foto:</label>
-              <input type="text" id="photo" name="photo" value={formDataCourse.photo} onChange={handleChangeCourse} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-      )}
-      {showSecondForm && !showThirdForm && !showFourForm && ( // Mostrar el segundo formulario si showSecondForm es verdadero y el tercer formulario no está mostrándose
-        <div>
-          <h2>Segundo formulario:</h2>
-          <form onSubmit={handleSubmitLevel}>
-            <div>
-              <label htmlFor="title">Nombre del Nivel:</label>
-              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
-            </div>
-            <div>
-              <label htmlFor="part">Parte:</label>
-              <input type="number" id="part" name="part" value={formDataLevel.part} onChange={handleChangeLevel} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-      )}
-      {showThirdForm && !showFourForm && ( // Mostrar el tercer formulario si showThirdForm es verdadero
-        <div>
-          <h2>Tercer formulario:</h2>
-          <form onSubmit={handleSubmitLesson}>
-            <div>
-              <label htmlFor="title">Nombre de la lesson:</label>
-              <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-          {/* Aquí colocarías el contenido y el formulario del tercer paso */}
-        </div>
-      )}
-
-      {showFourForm && ( // Mostrar el tercer formulario si showThirdForm es verdadero
-        <div>
-          <h2>Cuarto formulario:</h2>
-          <form onSubmit={handleSubmitFlashCard}>
-            <div>
-              <label htmlFor="title">Nombre de la lesson:</label>
-              <input type="text" id="title" name="title" value={formDataFlashCard.title} onChange={handleChangeFlashCard} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-          {/* Aquí colocarías el contenido y el formulario del tercer paso */}
-        </div>
-      )}
+        </style>
+        <Level />
+        <Level />
+        <Level />
+        <Level />
+        <Level />
+        <Level />
+        <CourseSectionPlus></CourseSectionPlus>
       </div>
+
+      <div style={{ backgroundColor: "white", gridColumn: '2 / span 2', borderRadius: "16px", marginLeft: "15px" }}>
+        <FlashCardBar />
+      </div>
+
     </div>
   );
 };
