@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 
 const Test = () => {
   const [courses, setCourses] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
-  const [formData, setFormData] = useState({ title: '', description: '' });
 
   useEffect(() => {
     // Definimos una función asincrónica para hacer la solicitud al endpoint
@@ -33,58 +31,30 @@ const Test = () => {
     fetchData();
   }, []);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes enviar los datos del formulario, por ejemplo, mediante una solicitud POST
-    console.log('Formulario enviado:', formData);
-    // Limpia el formulario y cierra el popup
-    setFormData({ title: '', description: '' });
-    setShowPopup(false);
-    // Realizar la acción que hacían los enlaces antes
-    // Por ejemplo, redirigir a una nueva ruta
-    window.location.href = "/subdirectory/NewCourse";
-  };
-
   return (
     <div>
       <div className="mt-3 w-[335px]">
-        {/* Abre el popup cuando se hace clic en el botón */}
-        <a href="#" onClick={() => setShowPopup(true)}>
+        <Link key={3} to={"/subdirectory/NewCourse"}>
           <ButtonLogOut text={"Create new course"} ></ButtonLogOut>
-        </a>
+        </Link>
       </div>
-
-      {/* Popup para crear un nuevo curso */}
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-inner">
-            <h2>Crear nuevo curso</h2>
-            <form onSubmit={handleSubmit}>
-              <input type="text" name="title" placeholder="Título" value={formData.title} onChange={handleInputChange} />
-              <input type="text" name="description" placeholder="Foto" value={formData.description} onChange={handleInputChange} />
-              <button type="submit">Create</button>
-            </form>
-            <button onClick={() => setShowPopup(false)}>Cerrar</button>
-          </div>
-        </div>
-      )}
-
-      {/* Lista de cursos */}
+      {/* Charts */}
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+
         {courses.map((course, index) => (
           <CourseCard key={index} text={course.title} />
         ))}
-        <button onClick={() => setShowPopup(true)}>
+
+        <Link key={3} to={"/subdirectory/NewCourse"}>
           <CourseCardPlus />
-        </button>
+        </Link>
       </div>
 
-      {/* Resto del contenido... */}
+      {/* Tables & Charts */}
+      <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
+        {/* Check Table */}
+
+      </div>
     </div>
   );
 };
