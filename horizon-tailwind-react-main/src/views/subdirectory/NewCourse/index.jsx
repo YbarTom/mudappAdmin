@@ -147,10 +147,14 @@ const Test = () => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop:"10px"}}>
-      <div>
+      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
+        <Level/>
+        <Level/>
+        <Level/>
+        <Level/>
+        <Level/>
         <Level/>
         <CourseSectionPlus></CourseSectionPlus>
-
       </div>
       <div> </div>
       <div>
