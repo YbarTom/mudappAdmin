@@ -6,6 +6,9 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 import Level from './components/Level';
 
 const Test = () => {
+
+  var levels = []
+
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
@@ -86,6 +89,15 @@ const Test = () => {
           part: formDataLevel.part
         })
       });
+
+      var level = {
+        title: formDataLevel.title,
+        part: formDataLevel.part
+      }
+
+      levels.push(level)
+
+      console.log(level)
 
       const data = await response.json();
       console.log('ID del nuevo level:', data.id);
