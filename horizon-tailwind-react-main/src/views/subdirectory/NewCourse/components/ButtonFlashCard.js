@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
+import plus from "assets/img/ColleBree/add.png";
 
 const StyledButton = styled.button`
   background-color: hsl(210, 20%, 98%);
