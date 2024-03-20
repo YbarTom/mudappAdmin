@@ -117,6 +117,7 @@ const Test = () => {
       const data2 = await response2.json();
       console.log(data2);
       setLevels(data2);
+      setFormDataLevel({ ...formDataLesson, lessons: data2 });
 
       } else {
         console.error('Error al guardar datos.');
@@ -143,6 +144,14 @@ const Test = () => {
 
       if (response.ok) {
         console.log('Datos guardados exitosamente lesson');
+        const response2 = await fetch(`http://localhost:3001/getLessons/${formDataLesson.idLevel}`, {
+        method: 'POST',
+        mode: 'cors'
+      });
+
+      const data2 = await response2.json();
+      console.log(data2);
+      setLessons(data2);
         setShowFourForm(true);
       } else {
         console.error('Error al guardar datos.');
