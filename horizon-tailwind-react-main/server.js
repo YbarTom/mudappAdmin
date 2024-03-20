@@ -1,7 +1,6 @@
 const express = require('express');
 const fs = require('fs').promises;
 const cors = require('cors'); // Importa el paquete cors
-
 const app = express();
 const PORT = 3001;
 
@@ -81,12 +80,13 @@ app.post('/guardar-datos-level', async (req, res) => {
     // Agregar el nuevo nivel al array de niveles del curso encontrado
     course.levels.push(id);
 
-    // Escribir los datos actualizados de los cursos
-    await fs.writeFile('courses.json', JSON.stringify(courses, null, 2));
+    // Escribir los datos actualizados de los cursos y del nuevo nivel
+    await Promise.all([
+      fs.writeFile('courses.json', JSON.stringify(courses, null, 2)),
+      fs.writeFile('levels.json', JSON.stringify([...levels, newLevel], null, 2))
+    ]);
 
-    // Escribir los datos del nuevo nivel
-    await fs.writeFile('levels.json', JSON.stringify([...levels, newLevel], null, 2));
-
+    // Envía la respuesta solo después de que ambas escrituras se completen
     res.status(200).json({ id });
 
   } catch (error) {
@@ -144,7 +144,7 @@ app.post('/guardar-datos-lesson', async (req, res) => {
 
 app.post('/guardar-datos-flashcard', async (req, res) => {
   try {
-    const { title, idLesson, subtitle, options, type} = req.body;
+    const { title, idLesson, subtitle, options, type } = req.body;
     checkFlashCard(type, options)
 
   } catch (error) {
@@ -160,28 +160,28 @@ async function checkFlashCard(type, options) {
 
   switch (type) {
     case "TrueFalse":
-      for(let i=0; i < options.length; i++){
+      for (let i = 0; i < options.length; i++) {
         correctValues[i].idOption = options[i].idOption
         correctValues[i].value = options[i].value
         newOptions[i].idOption = options[i].idOption
         newOptions[i].text = options[i].text
       }
-    break;
+      break;
     case "MultipleChoice":
-      for(let i=0; i<options.length; i++){
-        if(options[i].value===true){
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value === true) {
           correctValues.push(options[i].idOption)
         }
-        newOptions[i].idOption=options[i].idOption
-        newOptions[i].text=options[i].text
+        newOptions[i].idOption = options[i].idOption
+        newOptions[i].text = options[i].text
       }
-    break;
+      break;
     case "LessonComplete":
 
-    break;
+      break;
     case "LessonRelate":
 
-    break;
+      break;
   }
 }
 
@@ -189,10 +189,10 @@ app.get('/courses', async (req, res) => {
   try {
     // Lee el contenido del archivo courses.json
     const data = await fs.readFile('courses.json', 'utf8');
-    
+
     // Parsea el contenido del archivo JSON
     const courses = JSON.parse(data);
-    
+
     // Devuelve los cursos como respuesta
     res.json(courses);
   } catch (error) {
@@ -205,10 +205,10 @@ app.get('/levels', async (req, res) => {
   try {
     // Lee el contenido del archivo courses.json
     const data = await fs.readFile('levels.json', 'utf8');
-    
+
     // Parsea el contenido del archivo JSON
     const levels = JSON.parse(data);
-    
+
     // Devuelve los cursos como respuesta
     res.json(levels);
   } catch (error) {
@@ -221,10 +221,10 @@ app.get('/lessons', async (req, res) => {
   try {
     // Lee el contenido del archivo courses.json
     const data = await fs.readFile('lessons.json', 'utf8');
-    
+
     // Parsea el contenido del archivo JSON
     const lessons = JSON.parse(data);
-    
+
     // Devuelve los cursos como respuesta
     res.json(lessons);
   } catch (error) {
@@ -233,6 +233,30 @@ app.get('/lessons', async (req, res) => {
   }
 });
 
+app.post('/getLevels/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id)
+
+    const data = await fs.readFile('levels.json', 'utf8');
+
+    // Parsear el contenido JSON del archivo
+    const levels = JSON.parse(data);
+
+    console.log(levels)
+    // Filtrar los niveles por el ID del curso
+    const filteredLevels = levels.filter(level => level.idCourse === parseInt(id));
+    console.log(filteredLevels)
+    // Enviar la respuesta con los niveles filtrados
+    res.json(filteredLevels);
+
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor', id);
+  }
+
+
+})
 
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);

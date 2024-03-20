@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CourseSection from './components/CourseSection';
 import Level from './components/Level';
 import CourseSectionPlus from './components/CoursSectionPlus';
@@ -6,7 +6,6 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 const Test = () => {
   const [levels, setLevels] = useState([]);
   const [lessons, setLessons] = useState([]);
-
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
@@ -20,7 +19,6 @@ const Test = () => {
     title: '',
     idLevel: 0
   });
-
   const [formDataFlashCard, setFormDataFlashCard] = useState({
     title: '',
   });
@@ -43,8 +41,11 @@ const Test = () => {
   const handleChangeFlashCard = (e) => {
     setFormDataFlashCard({ ...formDataFlashCard, [e.target.name]: e.target.value });
   };
+
   const handleSubmitCourse = async (e) => {
     e.preventDefault();
+
+    setShowSecondForm(true);
 
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
@@ -63,8 +64,19 @@ const Test = () => {
 
       setFormDataLevel({ ...formDataLevel, idCourse: data.id });
 
+      const response2 = await fetch(`http://localhost:3001/getLevels/${data.id}`, {
+        method: 'POST',
+        mode: 'cors'
+      });
+
+      const data2 = await response2.json();
+      console.log(data2);
+
+      setLevels(data2);
+
       console.log('Datos guardados exitosamente.');
-      setShowSecondForm(true);
+
+      
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
@@ -84,14 +96,9 @@ const Test = () => {
           idCourse: formDataLevel.idCourse,
           part: formDataLevel.part
         })
+
+        
       });
-
-      var level = {
-        title: formDataLevel.title,
-        part: formDataLevel.part
-      };
-
-      setLevels([...levels, level]);
 
       const data = await response.json();
       console.log('ID del nuevo level:', data.id);
@@ -101,6 +108,16 @@ const Test = () => {
       if (response.ok) {
         console.log('Datos guardados exitosamente level');
         setShowThirdForm(true);
+
+        const response2 = await fetch(`http://localhost:3001/getLevels/${formDataLevel.idCourse}`, {
+        method: 'POST',
+        mode: 'cors'
+      });
+
+      const data2 = await response2.json();
+      console.log(data2);
+      setLevels(data2);
+
       } else {
         console.error('Error al guardar datos.');
       }
@@ -125,12 +142,6 @@ const Test = () => {
       });
 
       if (response.ok) {
-        var lesson = {
-          title: formDataLesson.title,
-          part: formDataLesson.part
-        };
-  
-        setLessons([...lessons, lesson]);
         console.log('Datos guardados exitosamente lesson');
         setShowFourForm(true);
       } else {
@@ -139,16 +150,18 @@ const Test = () => {
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
-  }
+  };
+
   const handleSubmitFlashCard = async (e) => {
+    e.preventDefault();
     setShowFourForm(true);
-  }
+  };
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {levels.map((level, index) => (
-          <Level key={index} title={level.title} parte={level.part} lessons={lessons}/>
+          <Level key={index} title={level.title} parte={level.part} lessons={lessons} />
         ))}
         <CourseSectionPlus></CourseSectionPlus>
       </div>
