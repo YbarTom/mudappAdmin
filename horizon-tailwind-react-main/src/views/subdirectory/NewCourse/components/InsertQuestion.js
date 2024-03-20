@@ -4,7 +4,7 @@ const InsertQuestion = () => {
 
     return (
         <div>
-            <p style={{ marginLeft: "18px" }}><b>Introduce la Pregunta</b></p>
+            <p /*style={{ marginLeft: "18px" }}*/><b>Introduce la Pregunta</b></p>
             <textarea className="textarea" placeholder="Introduce la Pregunta..." style={{
                 backgroundColor: "#dddddd",
                 color: "#666666",
