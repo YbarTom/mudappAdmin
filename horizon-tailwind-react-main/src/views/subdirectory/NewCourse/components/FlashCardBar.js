@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-const FlashCardBar = () => {
+const FlashCardBar = ({ onSelect }) => {
   const [selected, setSelected] = useState(0);
 
   const handleSelect = (index) => {
     setSelected(index);
+    onSelect(index); // Llamar a la función onSelect pasada a través de las props
   };
 
   return (

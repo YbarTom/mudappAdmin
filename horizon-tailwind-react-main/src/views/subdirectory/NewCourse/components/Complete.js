@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import InsertQuestion from "./InsertQuestion";
 
-const MultipleChoice = () => {
+const Complete = () => {
 
     return (
         <div style={{ margin: "20px" }}>
-            <h1>Multiple Choice</h1>
+            <h1>Complete</h1>
             <InsertQuestion />
         </div>
     );
 };
 
-export default MultipleChoice;
+export default Complete;
