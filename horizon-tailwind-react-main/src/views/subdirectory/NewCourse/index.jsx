@@ -5,6 +5,7 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 import FlashCardBar from './components/FlashCardBar';
 import Level from './components/Level';
 import { color } from '@chakra-ui/system';
+import FlashCardInsertBox from './components/FlashCardInsertBox';
 
 const Test = () => {
 
@@ -166,9 +167,7 @@ const Test = () => {
         <CourseSectionPlus></CourseSectionPlus>
       </div>
 
-      <div style={{ backgroundColor: "white", gridColumn: '2 / span 2', borderRadius: "16px", marginLeft: "15px" }}>
-        <FlashCardBar />
-      </div>
+      <FlashCardInsertBox/>
 
     </div>
   );
