@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InsertQuestion from "./InsertQuestion";
+import ButtonFlashCard from "./ButtonFlashCard";
 
 const MultipleChoice = () => {
 
@@ -7,6 +8,7 @@ const MultipleChoice = () => {
         <div style={{ margin: "20px" }}>
             <h1>Multiple Choice</h1>
             <InsertQuestion />
+            <ButtonFlashCard text={"Add Answer"} />
         </div>
     );
 };
