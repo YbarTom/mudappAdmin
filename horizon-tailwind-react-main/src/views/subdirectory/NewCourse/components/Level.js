@@ -14,7 +14,7 @@ const Level = ({ title, parte, status, className, id, onClickArrow, lessons, fla
 
   return (
     <div>
-      <CourseSection title={title} parte={`Parte ${parte}`} status="available" onClickArrow={() => handleClickArrow()} />
+      <CourseSection title={title} parte={`Parte ${parte}`} status="default" onClickArrow={() => handleClickArrow()} />
       {showLessons && (
         <div>
           {lessons.map((lesson, index) => (
