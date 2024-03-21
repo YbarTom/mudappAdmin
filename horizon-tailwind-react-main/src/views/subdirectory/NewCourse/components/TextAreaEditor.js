@@ -126,7 +126,7 @@ const TextAreaEditor = () => {
 
     return (
         <div>
-            <div className="w-full max-w-xl overflow-hidden rounded-xl border border-gray-300 bg-white">
+            <div className="max-w-full overflow-hidden rounded-xl  border border-gray-300 bg-white">
                 <div id="hs-editor-tiptap">
                     <div className="m-1 flex items-center gap-0.5 rounded-lg bg-gray-100 p-1">
                         <button
@@ -437,7 +437,7 @@ const TextAreaEditor = () => {
             </div>
             <p class="text-gray-600">Hay que desarrollar actuaciones preventivas dirigidas a evitar los riesgos existentes, tanto aquellos que pueden provocar accidentes o enfermedades profesionales, como cualquier otro daño para la salud como, por ejemplo, el estés laboral.</p><p class="text-gray-600"></p><p class="text-gray-600"><strong class="font-bold">Al finalizar esta unidad habrás alcanzado los siguientes objetivos:</strong></p><ol class="list-disc list-inline text-gray-800"><li><p class="text-gray-600">Conocer los conceptos básicos relacionados con la seguridad y salud en el trabajo.</p></li><li><p class="text-gray-600">Identificar los tipos de riesgos laborales existentes y los posibles</p></li><li><p class="text-gray-600">Daños derivados del trabajo.</p></li></ol>
             <button onClick={handleClick}>hola</button>
-           </div>
+        </div>
     );
 };
 
