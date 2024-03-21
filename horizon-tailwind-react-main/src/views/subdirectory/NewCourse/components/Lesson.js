@@ -40,7 +40,7 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson, flashc
       </LessonContainer>
       {!arrowVisible && <div>
         {flashcards.map((flashcard, index) => (
-          <FlashCardBox type={flashcard.type} title={flashcard.type} />
+          <FlashCardBox type={flashcard.type} title={flashcard.title} />
         ))}
         <FlashCardBoxPlus />
       </div>}
