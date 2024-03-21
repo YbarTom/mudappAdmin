@@ -371,5 +371,41 @@
       51,
       52
     ]
+  },
+  {
+    "id": 38,
+    "idCourse": 27,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      55,
+      58,
+      59,
+      60,
+      61,
+      64
+    ]
+  },
+  {
+    "id": 39,
+    "idCourse": 27,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      56,
+      57,
+      62,
+      63
+    ]
+  },
+  {
+    "id": 40,
+    "idCourse": 27,
+    "part": "1",
+    "title": "v",
+    "status": 0,
+    "lessons": []
   }
 ]

@@ -76,7 +76,6 @@ const Test = () => {
 
       console.log('Datos guardados exitosamente.');
 
-
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
@@ -96,8 +95,6 @@ const Test = () => {
           idCourse: formDataLevel.idCourse,
           part: formDataLevel.part
         })
-
-
       });
 
       const data = await response.json();
