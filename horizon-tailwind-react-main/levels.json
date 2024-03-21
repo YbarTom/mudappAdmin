@@ -100,5 +100,15 @@
     "title": "a",
     "status": 0,
     "lessons": []
+  },
+  {
+    "id": 12,
+    "idCourse": 41,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      10
+    ]
   }
 ]
