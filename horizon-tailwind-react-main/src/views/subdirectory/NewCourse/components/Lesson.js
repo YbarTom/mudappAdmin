@@ -21,7 +21,7 @@ const ArrowImage = styled.img`
   margin-right: 20px; /* Alinea la flecha a la derecha */
 `;
 
-const Lesson = ({ locked = true, title, status, progress, ruta, idLesson }) => {
+const Lesson = ({ locked = true, title, status, progress, ruta, idLesson, flashcards }) => {
   const [arrowVisible, setArrowVisible] = useState(true); // Estado para controlar qué flecha se muestra
   const toggleArrow = () => {
     setArrowVisible(!arrowVisible);
@@ -39,12 +39,11 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson }) => {
         )}
       </LessonContainer>
       {!arrowVisible && <div>
-        <FlashCardBox type="MultipleChoice" title="Multiple Choice"/>
-        <FlashCardBox type="LessonRelate" title="Relate"/>
-        <FlashCardBox type="TrueFalse" title="True False"/>
-        <FlashCardBox type="LessonComplete" title="Complete"/>
-        <FlashCardBoxPlus/>
-        </div>}
+        {flashcards.map((flashcard, index) => (
+          <FlashCardBox type={flashcard.type} title={flashcard.type} />
+        ))}
+        <FlashCardBoxPlus />
+      </div>}
     </div>
   );
 };

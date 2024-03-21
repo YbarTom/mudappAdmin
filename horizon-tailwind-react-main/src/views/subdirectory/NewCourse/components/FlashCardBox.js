@@ -24,19 +24,10 @@ const Image = styled.img`
   margin-right: 20px; /* Espacio a la derecha de la imagen */
 `;
 
-const FlashCardBox = ({ type, title, flashcards }) => {
+const FlashCardBox = ({ type, title }) => {
   return (
     <StyledCourseSection>
-
-      {flashcards.map((flashcard, index) => (
-        <React.Fragment key={index}> {/* Adding key prop to avoid warnings */}
-          {flashcard.type === "LessonRelate" && <Image src={Relate} alt="Relate Icon" />}
-          {flashcard.type === "TrueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
-          {flashcard.type === "LessonComplete" && <Image src={Complete} alt="Complete Icon" />}
-          {flashcard.type === "MultipleChoice" && <Image src={multipleChoice} alt="Multiple Choice Icon" />}
-        </React.Fragment>
-      ))}
-
+      
       {type === "LessonRelate" && <Image src={Relate} alt="Relate Icon" />}
       {type === "TrueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
       {type === "LessonComplete" && <Image src={Complete} alt="Complete Icon" />}

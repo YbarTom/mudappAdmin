@@ -122,7 +122,7 @@ const CourseSection = ({ title, parte, status, className, id , onClickArrow}) =>
 CourseSection.propTypes = {
   title: PropTypes.string,
   parte: PropTypes.string,
-  status: PropTypes.oneOf(["locked", "default"]),
+  status: PropTypes.oneOf(["locked", "default", "available"]),
   onClickArrow: PropTypes.func, // Propiedad para manejar el clic en la flecha
 };
 

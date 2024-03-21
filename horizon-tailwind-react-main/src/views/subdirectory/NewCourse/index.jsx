@@ -175,7 +175,6 @@ const Test = () => {
       </div>
       <div> </div>
       <div>
-        {!showSecondForm && (
           <div>
             <h2>Introduce tus datos:</h2>
             <form onSubmit={handleSubmitCourse}>
@@ -190,8 +189,6 @@ const Test = () => {
               <button type="submit">Enviar</button>
             </form>
           </div>
-        )}
-        {showSecondForm && !showThirdForm && !showFourForm && (
           <div>
             <h2>Segundo formulario:</h2>
             <form onSubmit={handleSubmitLevel}>
@@ -206,8 +203,6 @@ const Test = () => {
               <button type="submit">Enviar</button>
             </form>
           </div>
-        )}
-        {showThirdForm && !showFourForm && (
           <div>
             <h2>Tercer formulario:</h2>
             <form onSubmit={handleSubmitLesson}>
@@ -218,7 +213,6 @@ const Test = () => {
               <button type="submit">Enviar</button>
             </form>
           </div>
-        )}
       </div>
     </div>
   );

@@ -252,8 +252,6 @@ app.post('/getLevels/:id', async (req, res) => {
     console.error('Error al leer el archivo:', error);
     res.status(500).send('Error interno del servidor', id);
   }
-
-
 })
 
 app.post('/getLessons/:id', async (req, res) => {
@@ -277,8 +275,29 @@ app.post('/getLessons/:id', async (req, res) => {
     console.error('Error al leer el archivo:', error);
     res.status(500).send('Error interno del servidor', id);
   }
+})
 
+app.post('/getFlashCards/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id)
 
+    const data = await fs.readFile('flashcards.json', 'utf8');
+
+    // Parsear el contenido JSON del archivo
+    const flashcards = JSON.parse(data);
+
+    console.log(flashcards)
+    // Filtrar los niveles por el ID del curso
+    const filteredFlashCards = flashcards.filter(flashcard => flashcard.idLesson === parseInt(id));
+    console.log(filteredFlashCards)
+    // Enviar la respuesta con los niveles filtrados
+    res.json(filteredFlashCards);
+
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor', id);
+  }
 })
 
 app.listen(PORT, () => {
