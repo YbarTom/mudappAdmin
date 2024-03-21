@@ -13,12 +13,17 @@ margin-top: 10px;
   width: 100%;
 `;
 
-const LessonPlus = ({ locked = true, title, status, progress, ruta, idLesson}) => {
-  
+
+const LessonPlus = ({ locked = true, title, status, progress, ruta, idLesson, id, clickHandler }) => {
+
+  const handleClick = () => {
+    clickHandler(id);
+  };
+
   return (
-    <LessonContainer >
-      <LessonIconPlus status={status} progress={progress} ruta={ruta} idLesson={idLesson}/>
-       
+    <LessonContainer onClick={handleClick}>
+      <LessonIconPlus status={status} progress={progress} ruta={ruta} idLesson={idLesson} />
+
     </LessonContainer>
   );
 };

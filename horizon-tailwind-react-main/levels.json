@@ -302,5 +302,74 @@
     "title": "b",
     "status": 0,
     "lessons": []
+  },
+  {
+    "id": 32,
+    "idCourse": 24,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      40
+    ]
+  },
+  {
+    "id": 33,
+    "idCourse": 25,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      41
+    ]
+  },
+  {
+    "id": 34,
+    "idCourse": 25,
+    "part": "1",
+    "title": "b",
+    "status": 0,
+    "lessons": [
+      42
+    ]
+  },
+  {
+    "id": 35,
+    "idCourse": 26,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      43,
+      45,
+      46,
+      47,
+      48,
+      54
+    ]
+  },
+  {
+    "id": 36,
+    "idCourse": 26,
+    "part": "1",
+    "title": "b",
+    "status": 0,
+    "lessons": [
+      44,
+      49,
+      50,
+      53
+    ]
+  },
+  {
+    "id": 37,
+    "idCourse": 26,
+    "part": "1",
+    "title": "b",
+    "status": 0,
+    "lessons": [
+      51,
+      52
+    ]
   }
 ]

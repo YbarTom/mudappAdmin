@@ -76,7 +76,7 @@ const Test = () => {
 
       console.log('Datos guardados exitosamente.');
 
-      
+
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
@@ -97,7 +97,7 @@ const Test = () => {
           part: formDataLevel.part
         })
 
-        
+
       });
 
       const data = await response.json();
@@ -110,13 +110,13 @@ const Test = () => {
         setShowThirdForm(true);
 
         const response2 = await fetch(`http://localhost:3001/getLevels/${formDataLevel.idCourse}`, {
-        method: 'POST',
-        mode: 'cors'
-      });
+          method: 'POST',
+          mode: 'cors'
+        });
 
-      const data2 = await response2.json();
-      console.log(data2);
-      setLevels(data2);
+        const data2 = await response2.json();
+        console.log(data2);
+        setLevels(data2);
 
       } else {
         console.error('Error al guardar datos.');
@@ -144,14 +144,31 @@ const Test = () => {
       if (response.ok) {
         console.log('Datos guardados exitosamente lesson');
         const response2 = await fetch(`http://localhost:3001/getLessons/${formDataLesson.idLevel}`, {
-        method: 'POST',
-        mode: 'cors'
-      });
+          method: 'POST',
+          mode: 'cors'
+        });
 
-      const data2 = await response2.json();
-      console.log(data2);
-      setLessons(data2);
-      //setShowFourForm(true);
+        const data2 = await response2.json();
+        console.log(data2);
+        setLessons(data2);
+
+        const updatedLevels = levels.map(level => {
+          // If the level id matches the idLevel from formDataLesson, update its lessons
+          if (level.id === formDataLesson.idLevel) {
+            // Return a new object with updated lessons
+            return {
+              ...level,
+              lessons: data2
+            };
+          } else {
+            // Return the original level if it doesn't match the idLevel
+            return level;
+          }
+        });
+
+        // Set the state with the updated levels array
+        setLevels(updatedLevels);
+        //setShowFourForm(true);
       } else {
         console.error('Error al guardar datos.');
       }
@@ -165,54 +182,58 @@ const Test = () => {
     setShowFourForm(true);
   };
 
+  const addLessontoLevel = async (id) => {
+    setFormDataLesson({ ...formDataLesson, idLevel: id });
+  };
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
         {levels.map((level, index) => (
-          <Level key={index} title={level.title} parte={level.part} lessons={lessons} />
+          <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
         ))}
         <CourseSectionPlus></CourseSectionPlus>
       </div>
       <div> </div>
       <div>
-          <div>
-            <h2>Introduce tus datos:</h2>
-            <form onSubmit={handleSubmitCourse}>
-              <div>
-                <label htmlFor="title">Nombre del curso:</label>
-                <input type="text" id="title" name="title" value={formDataCourse.title} onChange={handleChangeCourse} />
-              </div>
-              <div>
-                <label htmlFor="photo">Foto:</label>
-                <input type="text" id="photo" name="photo" value={formDataCourse.photo} onChange={handleChangeCourse} />
-              </div>
-              <button type="submit">Enviar</button>
-            </form>
-          </div>
-          <div>
-            <h2>Segundo formulario:</h2>
-            <form onSubmit={handleSubmitLevel}>
-              <div>
-                <label htmlFor="title">Nombre del Nivel:</label>
-                <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
-              </div>
-              <div>
-                <label htmlFor="part">Parte:</label>
-                <input type="number" id="part" name="part" value={formDataLevel.part} onChange={handleChangeLevel} />
-              </div>
-              <button type="submit">Enviar</button>
-            </form>
-          </div>
-          <div>
-            <h2>Tercer formulario:</h2>
-            <form onSubmit={handleSubmitLesson}>
-              <div>
-                <label htmlFor="title">Nombre de la lesson:</label>
-                <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
-              </div>
-              <button type="submit">Enviar</button>
-            </form>
-          </div>
+        <div>
+          <h2>Introduce tus datos:</h2>
+          <form onSubmit={handleSubmitCourse}>
+            <div>
+              <label htmlFor="title">Nombre del curso:</label>
+              <input type="text" id="title" name="title" value={formDataCourse.title} onChange={handleChangeCourse} />
+            </div>
+            <div>
+              <label htmlFor="photo">Foto:</label>
+              <input type="text" id="photo" name="photo" value={formDataCourse.photo} onChange={handleChangeCourse} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+        <div>
+          <h2>Segundo formulario:</h2>
+          <form onSubmit={handleSubmitLevel}>
+            <div>
+              <label htmlFor="title">Nombre del Nivel:</label>
+              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
+            </div>
+            <div>
+              <label htmlFor="part">Parte:</label>
+              <input type="number" id="part" name="part" value={formDataLevel.part} onChange={handleChangeLevel} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+        <div>
+          <h2>Tercer formulario:</h2>
+          <form onSubmit={handleSubmitLesson}>
+            <div>
+              <label htmlFor="title">Nombre de la lesson:</label>
+              <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
       </div>
     </div>
   );
