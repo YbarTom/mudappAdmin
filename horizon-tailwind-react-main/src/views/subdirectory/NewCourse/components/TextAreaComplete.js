@@ -60,7 +60,7 @@ const TextAreaEditor = () => {
 
     const handleButtonClick = () => {
         if (editor) {
-            editor.commands.insertContent("Hola");
+            editor.commands.insertContent("▭");
         }
     };
 
