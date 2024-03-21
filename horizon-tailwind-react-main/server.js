@@ -242,13 +242,36 @@ app.post('/getLevels/:id', async (req, res) => {
 
     // Parsear el contenido JSON del archivo
     const levels = JSON.parse(data);
-
-    console.log(levels)
     // Filtrar los niveles por el ID del curso
     const filteredLevels = levels.filter(level => level.idCourse === parseInt(id));
     console.log(filteredLevels)
     // Enviar la respuesta con los niveles filtrados
     res.json(filteredLevels);
+
+  } catch (error) {
+    console.error('Error al leer el archivo:', error);
+    res.status(500).send('Error interno del servidor', id);
+  }
+
+
+})
+
+app.post('/getLessons/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id)
+
+    const data = await fs.readFile('lessons.json', 'utf8');
+
+    // Parsear el contenido JSON del archivo
+    const lessons = JSON.parse(data);
+
+    console.log(lessons)
+    // Filtrar los niveles por el ID del curso
+    const filteredLessons = lessons.filter(lesson => lesson.idLevel === parseInt(id));
+    console.log(filteredLessons)
+    // Enviar la respuesta con los niveles filtrados
+    res.json(filteredLessons);
 
   } catch (error) {
     console.error('Error al leer el archivo:', error);

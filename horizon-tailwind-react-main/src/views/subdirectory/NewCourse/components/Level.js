@@ -14,11 +14,11 @@ const Level = ({ title, parte, status, className, id, onClickArrow, lessons }) =
 
   return (
     <div>
-      <CourseSection title={title} parte={`Parte ${parte}`} status="available" onClickArrow={() => handleClickArrow()} />
+      <CourseSection title={title} parte={`Parte ${parte}`} status="default" onClickArrow={() => handleClickArrow()} />
       {showLessons && (
         <div>
-          {lessons.map((level, index) => (
-            <Lesson key={index} title={level.title} parte={level.part} />
+          {lessons.map((lesson, index) => (
+            <Lesson key={index} title={lesson.title} />
           ))}
 
           <LessonPlus />

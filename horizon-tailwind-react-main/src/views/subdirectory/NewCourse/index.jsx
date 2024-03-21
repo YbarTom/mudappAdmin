@@ -117,7 +117,6 @@ const Test = () => {
       const data2 = await response2.json();
       console.log(data2);
       setLevels(data2);
-      setFormDataLevel({ ...formDataLesson, lessons: data2 });
 
       } else {
         console.error('Error al guardar datos.');
@@ -152,7 +151,7 @@ const Test = () => {
       const data2 = await response2.json();
       console.log(data2);
       setLessons(data2);
-        setShowFourForm(true);
+      //setShowFourForm(true);
       } else {
         console.error('Error al guardar datos.');
       }
@@ -215,19 +214,6 @@ const Test = () => {
               <div>
                 <label htmlFor="title">Nombre de la lesson:</label>
                 <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
-              </div>
-              <button type="submit">Enviar</button>
-            </form>
-          </div>
-        )}
-
-        {showFourForm && (
-          <div>
-            <h2>Cuarto formulario:</h2>
-            <form onSubmit={handleSubmitFlashCard}>
-              <div>
-                <label htmlFor="title">Nombre de la lesson:</label>
-                <input type="text" id="title" name="title" value={formDataFlashCard.title} onChange={handleChangeFlashCard} />
               </div>
               <button type="submit">Enviar</button>
             </form>

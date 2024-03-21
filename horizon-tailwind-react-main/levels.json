@@ -8,5 +8,47 @@
     "lessons": [
       5
     ]
+  },
+  {
+    "id": 2,
+    "idCourse": 3,
+    "part": "1",
+    "title": "sadada",
+    "status": 0,
+    "lessons": [
+      6
+    ]
+  },
+  {
+    "id": 3,
+    "idCourse": 4,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      7
+    ]
+  },
+  {
+    "id": 4,
+    "idCourse": 5,
+    "part": "2",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      8
+    ]
+  },
+  {
+    "id": 5,
+    "idCourse": 6,
+    "part": "2",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      9,
+      10,
+      11
+    ]
   }
 ]
