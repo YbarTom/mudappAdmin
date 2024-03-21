@@ -24,14 +24,23 @@ const Image = styled.img`
   margin-right: 20px; /* Espacio a la derecha de la imagen */
 `;
 
-const FlashCardBox = ({ type,title}) => {
+const FlashCardBox = ({ type, title, flashcards }) => {
   return (
     <StyledCourseSection>
 
-      {type === "relate" && <Image src={Relate} alt="Relate Icon" />}
-      {type === "trueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
-      {type === "complete" && <Image src={Complete} alt="Complete Icon" />}
-      {type === "multipleChoice" && <Image src={multipleChoice} alt="Multiple Choice Icon" />}
+      {flashcards.map((flashcard, index) => (
+        <React.Fragment key={index}> {/* Adding key prop to avoid warnings */}
+          {flashcard.type === "LessonRelate" && <Image src={Relate} alt="Relate Icon" />}
+          {flashcard.type === "TrueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
+          {flashcard.type === "LessonComplete" && <Image src={Complete} alt="Complete Icon" />}
+          {flashcard.type === "MultipleChoice" && <Image src={multipleChoice} alt="Multiple Choice Icon" />}
+        </React.Fragment>
+      ))}
+
+      {type === "LessonRelate" && <Image src={Relate} alt="Relate Icon" />}
+      {type === "TrueFalse" && <Image src={TrueFalse} alt="True False Icon" />}
+      {type === "LessonComplete" && <Image src={Complete} alt="Complete Icon" />}
+      {type === "MultipleChoice" && <Image src={multipleChoice} alt="Multiple Choice Icon" />}
 
       <LessonIntroduction title={title} status="locked" />
     </StyledCourseSection>

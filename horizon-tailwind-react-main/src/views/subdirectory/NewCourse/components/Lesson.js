@@ -39,10 +39,10 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson }) => {
         )}
       </LessonContainer>
       {!arrowVisible && <div>
-        <FlashCardBox type="multipleChoice" title="Multiple Choice"/>
-        <FlashCardBox type="relate" title="Relate"/>
-        <FlashCardBox type="trueFalse" title="True False"/>
-        <FlashCardBox type="complete" title="Complete"/>
+        <FlashCardBox type="MultipleChoice" title="Multiple Choice"/>
+        <FlashCardBox type="LessonRelate" title="Relate"/>
+        <FlashCardBox type="TrueFalse" title="True False"/>
+        <FlashCardBox type="LessonComplete" title="Complete"/>
         <FlashCardBoxPlus/>
         </div>}
     </div>
