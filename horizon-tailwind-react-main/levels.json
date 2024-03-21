@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "id": 1,
+    "idCourse": 35,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "idCourse": 35,
+    "part": "1",
+    "title": "b",
+    "status": 0,
+    "lessons": [
+      4
+    ]
+  },
+  {
+    "id": 3,
+    "idCourse": 35,
+    "part": "1",
+    "title": "c",
+    "status": 0,
+    "lessons": [
+      5
+    ]
+  },
+  {
+    "id": 4,
+    "idCourse": 36,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 5,
+    "idCourse": 36,
+    "part": "2",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 6,
+    "idCourse": 37,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 7,
+    "idCourse": 38,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 8,
+    "idCourse": 39,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 9,
+    "idCourse": 40,
+    "part": "1",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      6
+    ]
+  },
+  {
+    "id": 10,
+    "idCourse": 40,
+    "part": "2",
+    "title": "a",
+    "status": 0,
+    "lessons": [
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "id": 11,
+    "idCourse": 40,
+    "part": "3",
+    "title": "a",
+    "status": 0,
+    "lessons": []
+  }
+]

@@ -5,7 +5,6 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 
 const Test = () => {
   const [levels, setLevels] = useState([]);
-  const [lessons, setLessons] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
     photo: ''
@@ -112,8 +111,13 @@ const Test = () => {
         });
 
         const data2 = await response2.json();
-        console.log(data2);
-        setLevels(data2);
+        console.log(data2[data2.length-1]);
+        
+        setLevels(prevLevels => [...prevLevels, data2[data2.length-1]]);
+
+        console.log("AAA")
+
+        console.log(levels)
 
       } else {
         console.error('Error al guardar datos.');
@@ -147,8 +151,6 @@ const Test = () => {
 
         const data2 = await response2.json();
         console.log(data2);
-        setLessons(data2);
-
         const updatedLevels = levels.map(level => {
           // If the level id matches the idLevel from formDataLesson, update its lessons
           if (level.id === formDataLesson.idLevel) {
