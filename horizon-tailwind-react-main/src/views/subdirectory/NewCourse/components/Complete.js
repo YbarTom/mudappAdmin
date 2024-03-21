@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InsertQuestion from "./InsertQuestion";
+import InsertQuestion from "./TextAreaEditor";
 
 const Complete = () => {
 

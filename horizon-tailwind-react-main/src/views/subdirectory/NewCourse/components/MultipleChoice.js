@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InsertQuestion from "./InsertQuestion";
+import InsertQuestion from "./TextAreaEditor";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
 
