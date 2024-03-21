@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InsertQuestion from "./TextAreaEditor";
+import TextAreaEditor from "./TextAreaWithoutButton";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
 
@@ -8,7 +8,7 @@ const MultipleChoice = () => {
     return (
         <div style={{ margin: "20px" }}>
             <h1>Multiple Choice</h1>
-            <InsertQuestion />
+            <TextAreaEditor />
             <p><b>Respuestas Correctas:</b></p>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <ButtonFlashCard text={"Patata"} />
