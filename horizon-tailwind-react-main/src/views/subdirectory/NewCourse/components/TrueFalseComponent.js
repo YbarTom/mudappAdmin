@@ -32,20 +32,24 @@ const ButtonsContainer = styled.div`
 `;
 
 export const TrueFalseComponent = () => {
-  const [question, setQuestion] = useState("Pregunta");
   const [types, setTypes] = useState([
     {
+      text: "Pregunta",
       type1: "default",
       type2: "default",
     }
   ]);
 
-  const handleQuestionChange = (event) => {
-    setQuestion(event.target.value);
+  const handleQuestionChange = (event, index) => {
+    const { value } = event.target;
+    setTypes(prevTypes => {
+      const updatedTypes = [...prevTypes];
+      updatedTypes[index].text = value;
+      return updatedTypes;
+    });
   };
 
   const handleClick = (index, valor) => {
-    console.log(types)
     setTypes(prevTypes => {
       const updatedTypes = [...prevTypes];
       if (valor) {
@@ -57,24 +61,28 @@ export const TrueFalseComponent = () => {
       }
       return updatedTypes;
     });
-
-    console.log(types)
-  }
+  };
 
   const handleClickPlus = () => {
-    setTypes(prevTypes => [...prevTypes, {
-      type1: "default",
-      type2: "default",
-    }])
-    console.log("AAA")
-  }
+    setTypes(prevTypes => [
+      ...prevTypes,
+      {
+        text: "Pregunta",
+        type1: "default",
+        type2: "default",
+      }
+    ]);
+  };
 
   return (
     <QuestionContainer>
       {types.map((type, index) => (
-        <QuestionContainer>
-          <TextField value={question} onChange={handleQuestionChange} />
-          <ButtonsContainer key={index}>
+        <div key={index}>
+          <TextField
+            value={type.text}
+            onChange={event => handleQuestionChange(event, index)}
+          />
+          <ButtonsContainer>
             <ButtonTrueFalse
               icono={<ThumbsUp4 />}
               type={type.type1}
@@ -86,11 +94,11 @@ export const TrueFalseComponent = () => {
               clickHandler={() => handleClick(index, false)}
             />
           </ButtonsContainer>
-        </QuestionContainer>
+        </div>
       ))}
-      <ButtonFlashCardPlus clickHandler={() => handleClickPlus()} />
+      <ButtonFlashCardPlus clickHandler={handleClickPlus} />
     </QuestionContainer>
   );
-}
+};
 
 TrueFalseComponent.propTypes = {};
