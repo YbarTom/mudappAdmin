@@ -5,9 +5,11 @@ import StarterKit from "@tiptap/starter-kit";
 import Paragraph from "@tiptap/extension-paragraph";
 import Bold from "@tiptap/extension-bold";
 import space from "assets/img/ColleBree/space.png";
-
+import ButtonFlashCard from "./ButtonFlashCard";
 const TextAreaEditor = () => {
     const [editor, setEditor] = useState(null);
+    const [flashcards, setFlashcards] = useState([]);
+
 
     useEffect(() => {
         if (!editor) return;
@@ -62,6 +64,8 @@ const TextAreaEditor = () => {
         if (editor) {
             editor.commands.insertContent("▭");
         }
+        setFlashcards([...flashcards, "espacio"]);
+
     };
     const handleClick = () => {
         if (editor) {
@@ -70,7 +74,7 @@ const TextAreaEditor = () => {
             console.log(text);
         }
     }
-    
+
 
     return (
         <div>
@@ -92,6 +96,11 @@ const TextAreaEditor = () => {
                 </div>
             </div>
             <button onClick={handleClick}>enviar</button>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px"}}>
+                {flashcards.map((text, index) => (
+                    <ButtonFlashCard key={index} text={text} />
+                ))}
+            </div>
         </div>
     );
 };
