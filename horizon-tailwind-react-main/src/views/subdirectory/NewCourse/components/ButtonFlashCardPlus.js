@@ -19,8 +19,15 @@ const PlusIcon = styled.img`
   max-height: 20px; /* Establece la altura máxima */
 `;
 
-const ButtonFlashCardPlus = () => {
-  return <StyledButton><PlusIcon src={plus} alt="Plus Icon" /></StyledButton>;
+export const ButtonFlashCardPlus = ({ clickHandler }) => {
+
+  const handleClick = () => {
+    if (clickHandler) {
+      clickHandler();
+    }
+  };
+
+  return <StyledButton onClick={handleClick}><PlusIcon src={plus} alt="Plus Icon" /></StyledButton>;
 };
 
 export default ButtonFlashCardPlus;
