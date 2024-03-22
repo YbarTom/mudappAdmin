@@ -63,6 +63,11 @@ const TextAreaEditor = () => {
             editor.commands.insertContent("▭");
         }
     };
+    const handleClick = () => {
+        if (editor) {
+            console.log(editor.getText());
+        }
+    }
 
     return (
         <div>
@@ -83,6 +88,7 @@ const TextAreaEditor = () => {
                     ></div>
                 </div>
             </div>
+            <button onClick={handleClick}>enviar</button>
         </div>
     );
 };
