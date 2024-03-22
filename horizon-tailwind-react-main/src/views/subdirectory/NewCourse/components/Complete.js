@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-//import TextAreaEditor from "./TextAreaComplete";
-import TextAreaEditor from "./TextAreaEditor";
+import TextAreaEditor from "./TextAreaComplete";
+//import TextAreaEditor from "./TextAreaEditor";
 
 const Complete = () => {
 
