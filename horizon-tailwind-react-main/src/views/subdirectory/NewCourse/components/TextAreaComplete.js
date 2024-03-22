@@ -65,9 +65,12 @@ const TextAreaEditor = () => {
     };
     const handleClick = () => {
         if (editor) {
-            console.log(editor.getText());
+            var text = editor.getText();
+            text = text.replaceAll('▭', '###');
+            console.log(text);
         }
     }
+    
 
     return (
         <div>
