@@ -5,11 +5,19 @@ import StarterKit from "@tiptap/starter-kit";
 import Paragraph from "@tiptap/extension-paragraph";
 import Bold from "@tiptap/extension-bold";
 import space from "assets/img/ColleBree/space.png";
-import ButtonFlashCard from "./ButtonFlashCard";
-const TextAreaEditor = () => {
+
+const TextAreaEditor = ({ onFlashcardsChange }) => {
     const [editor, setEditor] = useState(null);
     const [flashcards, setFlashcards] = useState([]);
 
+    const handleButtonClick = () => {
+        if (editor) {
+            editor.commands.insertContent("▭");
+        }
+        const newFlashcards = [...flashcards, "espacio"];
+        setFlashcards(newFlashcards);
+        onFlashcardsChange(newFlashcards); // Llama a la función proporcionada por el padre
+    };
 
     useEffect(() => {
         if (!editor) return;
@@ -19,7 +27,6 @@ const TextAreaEditor = () => {
                 id: "#hs-editor-tiptap [data-hs-editor-bold]",
                 fn: () => editor.chain().focus().toggleBold().run(),
             },
-            // Agrega más acciones aquí si es necesario
         ];
 
         actions.forEach(({ id, fn }) => {
@@ -60,21 +67,15 @@ const TextAreaEditor = () => {
         };
     }, []);
 
-    const handleButtonClick = () => {
-        if (editor) {
-            editor.commands.insertContent("▭");
-        }
-        setFlashcards([...flashcards, "espacio"]);
+    
 
-    };
     const handleClick = () => {
         if (editor) {
             var text = editor.getText();
             text = text.replaceAll('▭', '###');
             console.log(text);
         }
-    }
-
+    };
 
     return (
         <div>
@@ -91,16 +92,11 @@ const TextAreaEditor = () => {
                     </div>
                     <div
                         data-hs-editor-field
-                        className="p-2 mx-4 [&_*]:outline-none [&_.tiptap.ProseMirror]:min-h-[280px]"
+                        className="p-2 mx-4 [&_*]:outline-none [&_.tiptap.ProseMirror]:min-h-[100px]"
                     ></div>
                 </div>
             </div>
             <button onClick={handleClick}>enviar</button>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px"}}>
-                {flashcards.map((text, index) => (
-                    <ButtonFlashCard key={index} text={text} />
-                ))}
-            </div>
         </div>
     );
 };
