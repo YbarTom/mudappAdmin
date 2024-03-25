@@ -5,7 +5,7 @@ import CourseSection from "./CourseSection";
 import LessonPlus from "./LessonPlus";
 import FlashCardBox from "./FlashCardBox";
 
-const Level = ({ title, parte, status, className, id, onClickArrow, lessons, clickHandler }) => {
+const Level = ({ title, parte, status, className, id, onClickArrow, lessons, clickHandler,clickHandlerFlashCard}) => {
   const [showLessons, setShowLessons] = useState(false);
 
   const handleClickArrow = () => {
@@ -19,7 +19,7 @@ const Level = ({ title, parte, status, className, id, onClickArrow, lessons, cli
       {showLessons && (
         <div>
           {lessons.map((lesson, index) => (
-            <Lesson key={index} title={lesson.title} flashcards={lesson.flashcards} />
+            <Lesson key={index} title={lesson.title} flashcards={lesson.flashcards} clickHandlerFlashCard={clickHandlerFlashCard}/>
           ))}
 
           <LessonPlus id={id} clickHandler={clickHandler}/>

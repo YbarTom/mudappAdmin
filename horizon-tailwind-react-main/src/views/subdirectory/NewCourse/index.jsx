@@ -16,6 +16,7 @@ const Test = () => {
   const [showLevel, setShowLevel] = useState(false)
   const [showWhiteBox, setShowWhiteBox] = useState(false)
   const [showLesson, setShowLesson] = useState(false)
+  const [showFlashCard, setShowFlashCard] = useState(false)
   //setShowCourse(false)
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
@@ -214,6 +215,11 @@ const Test = () => {
     setShowLevel(true);
   }
 
+  const handleShowFlashCard = () => {
+    setShowWhiteBox(false);
+    setShowFlashCard(true);
+  }
+
   return (
     <>
       {showCourse ? (
@@ -230,7 +236,7 @@ const Test = () => {
               `}
             </style>
             {levels.map((level, index) => (
-              <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
+              <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} clickHandlerFlashCard={handleShowFlashCard}/>
             ))}
             <CourseSectionPlus clickhandler={handleShowLevel} />
           </div>
@@ -238,6 +244,7 @@ const Test = () => {
           {showWhiteBox && <WhiteBox />}
           {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
           {showLesson && <CreateLesson clickHandler={handleSubmitLesson}/>}
+          {showFlashCard && <FlashCardInsertBox />}
         </div>
       )}
     </>

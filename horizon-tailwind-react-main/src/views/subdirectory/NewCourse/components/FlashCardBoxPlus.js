@@ -20,9 +20,12 @@ const Image = styled.img`
   margin-right: 20px; /* Espacio a la derecha de la imagen */
 `;
 
-const FlashCardBoxPlus = () => {
+const FlashCardBoxPlus = ({clickHandlerFlashCard}) => {
+  const handleClick = () => {
+    clickHandlerFlashCard();
+  };
   return (
-    <StyledCourseSection>
+    <StyledCourseSection onClick={handleClick}>
         <Image src={plus} alt="Plus Icon" />
     </StyledCourseSection>
   );
