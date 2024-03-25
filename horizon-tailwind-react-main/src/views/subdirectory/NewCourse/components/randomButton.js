@@ -25,6 +25,7 @@ const TextWrapper = styled.div`
   position: relative;
   white-space: nowrap;
   width: fit-content;
+  color: ${({ type }) => (type === "blue" ? "white" : "unset")}; 
 `;
 
 export const ButtonLogOut = ({ text, type, clickHandler }) => {
@@ -37,7 +38,7 @@ export const ButtonLogOut = ({ text, type, clickHandler }) => {
 
   return (
     <MyButton type={type} onClick={handleClick}>
-      <TextWrapper>{text}</TextWrapper>
+      <TextWrapper type={type}>{text}</TextWrapper>
     </MyButton>
   );
 };
