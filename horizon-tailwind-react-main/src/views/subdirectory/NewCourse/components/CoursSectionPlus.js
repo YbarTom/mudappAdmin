@@ -20,9 +20,9 @@ const StyledImage = styled.img`
   max-height: 100%;
 `;
 
-const CourseSectionPlus = ({}) => {
+const CourseSectionPlus = ({clickhandler}) => {
     return (
-        <StyledCourseSection>
+        <StyledCourseSection onClick={clickhandler}>
             <StyledImage src={plus} />
         </StyledCourseSection>
     );

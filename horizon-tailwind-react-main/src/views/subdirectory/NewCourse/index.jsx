@@ -188,6 +188,11 @@ const Test = () => {
     setFormDataLesson({ ...formDataLesson, idLevel: id });
   };
 
+  const handleShowLevel = () => {
+    setShowWhiteBox(false);
+    setShowLevel(true);
+  }
+
   return (
     <>
       {showCourse ? (
@@ -206,10 +211,11 @@ const Test = () => {
             {levels.map((level, index) => (
               <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
             ))}
-            <CourseSectionPlus />
+            <CourseSectionPlus clickhandler={handleShowLevel}/>
           </div>
   
           {showWhiteBox && <WhiteBox />}
+          {showLevel && <FlashCardInsertBox />}
         </div>
       )}
     </>
