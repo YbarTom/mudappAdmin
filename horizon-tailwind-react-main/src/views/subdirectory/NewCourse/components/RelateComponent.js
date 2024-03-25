@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
-import ButtonFlashCard from "./ButtonFlashCard";
 
 const InputContainer = styled.div`
     display: flex;
