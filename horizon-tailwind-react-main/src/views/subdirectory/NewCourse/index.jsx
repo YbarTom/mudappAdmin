@@ -8,11 +8,13 @@ import FlashCardInsertBox from './components/FlashCardInsertBox';
 import WhiteBox from './components/WhiteBox';
 import CreateCourseBox from './components/CreateCourseBox';
 import CreateLevel from './components/CreateLevel';
+import CreateLesson from './components/CreateLesson';
 
 const Test = () => {
   const [showCourse, setShowCourse] = useState(true)
   const [showLevel, setShowLevel] = useState(false)
   const [showWhiteBox, setShowWhiteBox] = useState(false)
+  const [showLesson, setShowLesson] = useState(false)
   //setShowCourse(false)
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
@@ -217,6 +219,7 @@ const Test = () => {
   
           {showWhiteBox && <WhiteBox />}
           {showLevel && <CreateLevel />}
+          {showLesson && <CreateLesson />}
         </div>
       )}
     </>
