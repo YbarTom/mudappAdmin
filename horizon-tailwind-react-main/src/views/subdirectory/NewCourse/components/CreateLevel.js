@@ -16,8 +16,8 @@ const CreateLevel = () => {
         }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <Input placeholder="Title" />
-                <Input placeholder="Foto" />
-                <ButtonLogOut text={"Create new course"} type={"blue"}></ButtonLogOut>
+                <Input placeholder="PARTE" />
+                <ButtonLogOut text={"Create new Level"} type={"blue"}></ButtonLogOut>
             </div>
 
         </div>
