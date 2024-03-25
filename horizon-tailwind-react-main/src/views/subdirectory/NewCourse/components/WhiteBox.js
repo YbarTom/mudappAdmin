@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input } from "./Input";
 import { ButtonLogOut } from "./randomButton";
-
+import logo from "assets/img/ColleBree/Colibri.png"
 const WhiteBox = () => {
     return (
         <div style={{
@@ -15,7 +15,7 @@ const WhiteBox = () => {
             alignItems: "center",
         }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-               
+               <img src={logo} alt="logo" style={{width: "100px", height: "100px"}}/>
             </div>
 
         </div>
