@@ -92,7 +92,8 @@ const Test = () => {
   };
 
   const handleSubmitLevel = async () => {
-
+    setShowLevel(false);
+    setShowWhiteBox(true);
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-level', {
         method: 'POST',
@@ -218,6 +219,7 @@ const Test = () => {
   
           {showWhiteBox && <WhiteBox />}
           {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
+          {showLesson && <CreateLesson />}
         </div>
       )}
     </>
