@@ -429,7 +429,7 @@ const TextAreaEditor = () => {
                     </div>
                     <div
                         data-hs-editor-field
-                        className="p-2 mx-4 [&_*]:outline-none [&_.tiptap.ProseMirror]:min-h-[280px]"
+                        className="p-2 mx-4 [&_*]:outline-none [&_.tiptap.ProseMirror]:min-h-[100px]"
                     ></div>
 
 

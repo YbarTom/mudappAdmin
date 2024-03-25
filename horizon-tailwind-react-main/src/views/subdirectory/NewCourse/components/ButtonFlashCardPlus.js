@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   background-color: hsl(210, 20%, 98%);
   border: 2px solid #8091A4;
   border-radius: 16px;
-  padding: 8px 16px;
+  padding: 16px 16px;
   font-size: 16px;
   display: flex;
   align-items: center;
