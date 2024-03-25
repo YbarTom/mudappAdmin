@@ -40,6 +40,8 @@ export const TrueFalseComponent = () => {
     }
   ]);
 
+  const [title, setTitle] = useState(""); // Estado para el título
+
   const handleQuestionChange = (event, index) => {
     const { value } = event.target;
     setTypes(prevTypes => {
@@ -63,6 +65,10 @@ export const TrueFalseComponent = () => {
     });
   };
 
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value); // Actualiza el estado del título
+  };
+
   const handleClickPlus = () => {
     setTypes(prevTypes => [
       ...prevTypes,
@@ -76,9 +82,17 @@ export const TrueFalseComponent = () => {
 
   return (
     <QuestionContainer>
+      {/* Campo de entrada de texto para el título */}
+      <input
+        type="text"
+        placeholder="Ingresa el título"
+        value={title}
+        onChange={handleChangeTitle}
+      />
       {types.map((type, index) => (
         <div key={index}>
-          <TextField
+          <input // Cambiado de TextField a input
+            type="text"
             value={type.text}
             onChange={event => handleQuestionChange(event, index)}
           />
@@ -96,9 +110,7 @@ export const TrueFalseComponent = () => {
           </ButtonsContainer>
         </div>
       ))}
-      <ButtonFlashCardPlus clickHandler={handleClickPlus} />
+      
     </QuestionContainer>
   );
 };
-
-TrueFalseComponent.propTypes = {};

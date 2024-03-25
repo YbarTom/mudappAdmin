@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import TextAreaEditor from "./TextAreaWithoutButton";
+import { RelateComponent } from "./RelateComponent";
 
 const Relate = () => {
-
     return (
         <div style={{ margin: "20px" }}>
             <h1>Relate</h1>
-            <TextAreaEditor />
+            <RelateComponent />
         </div>
     );
 };
