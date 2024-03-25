@@ -78,8 +78,7 @@ const Test = () => {
 
       // Fetch levels data
       const response2 = await fetch(`http://localhost:3001/getLevels/${data.id}`, {
-        method: 'POST', // Changed to GET since we are retrieving data
-        mode: 'cors'
+        method: 'POST',
       });
 
       const data2 = await response2.json();
