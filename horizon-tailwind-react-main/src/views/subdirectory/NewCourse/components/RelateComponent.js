@@ -29,8 +29,8 @@ export const RelateComponent = () => {
         setPairs(prevPairs => [
           ...prevPairs,
           {
-            question1: "",
-            question2: ""
+            question1: "add text",
+            question2: "add text"
           }
         ]);
     };

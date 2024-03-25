@@ -5,7 +5,7 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 import FlashCardBar from './components/FlashCardBar';
 import { color } from '@chakra-ui/system';
 import FlashCardInsertBox from './components/FlashCardInsertBox';
-
+import WhiteBox from './components/WhiteBox';
 const Test = () => {
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
@@ -196,7 +196,7 @@ const Test = () => {
         <CourseSectionPlus/>
       </div>
 
-      <FlashCardInsertBox/>
+      <WhiteBox/>
 
     </div>
   );
