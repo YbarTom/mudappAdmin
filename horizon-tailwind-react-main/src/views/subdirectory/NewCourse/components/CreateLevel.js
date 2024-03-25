@@ -3,6 +3,25 @@ import { Input } from "./Input";
 import { ButtonLogOut } from "./randomButton";
 
 const CreateLevel = () => {
+
+    const [title, setTitle] = useState(""); // Estado para el valor del título
+    const [part, setPart] = useState(""); // Estado para el valor de la foto
+
+    // Manejar cambios en el input de título
+    const handleTitleChange = (event) => {
+        setTitle(event.target.value);
+    };
+
+    // Manejar cambios en el input de foto
+    const handlePartChange = (event) => {
+        setPhoto(event.target.value);
+    };
+
+    // Función para llamar al clickHandler con los valores de los inputs
+    const handleClick = () => {
+        clickHandler(title, part);
+    };
+
     return (
         <div style={{
             backgroundColor: "white",
@@ -15,9 +34,9 @@ const CreateLevel = () => {
             alignItems: "center",
         }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                <Input placeholder="Title" />
-                <Input placeholder="PARTE" />
-                <ButtonLogOut text={"Create new Level"} type={"blue"}></ButtonLogOut>
+                <Input placeholder="Title" value={title} onChange={handleTitleChange} />
+                <Input placeholder="Foto" value={photo} onChange={handlePartChange}/>
+                <ButtonLogOut text={"Create new course"} type={"blue"} clickHandler={handleClick}></ButtonLogOut>
             </div>
 
         </div>
