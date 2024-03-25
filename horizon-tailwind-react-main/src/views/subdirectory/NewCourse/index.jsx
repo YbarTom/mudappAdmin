@@ -5,8 +5,10 @@ import CourseSectionPlus from './components/CoursSectionPlus';
 import FlashCardBar from './components/FlashCardBar';
 import { color } from '@chakra-ui/system';
 import FlashCardInsertBox from './components/FlashCardInsertBox';
+import CreateCourseBox from './components/CreateCourseBox';
 
 const Test = () => {
+  const [showCourse, setShowCourse] = useState(false)
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
@@ -180,25 +182,30 @@ const Test = () => {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
-      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
-        <style>
-          {`
-      /* Para navegadores webkit (Chrome, Safari) */
-      ::-webkit-scrollbar {
-        display: none;
-      }
-    `}
-        </style>
-        {levels.map((level, index) => (
-          <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
-        ))}
-        <CourseSectionPlus/>
-      </div>
-
-      <FlashCardInsertBox/>
-
-    </div>
+    <>
+      {showCourse ? (
+        <CreateCourseBox />
+      ) : (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
+          <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
+            <style>
+              {`
+                /* Para navegadores webkit (Chrome, Safari) */
+                ::-webkit-scrollbar {
+                  display: none;
+                }
+              `}
+            </style>
+            {levels.map((level, index) => (
+              <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
+            ))}
+            <CourseSectionPlus />
+          </div>
+  
+          <FlashCardInsertBox />
+        </div>
+      )}
+    </>
   );
 };
 
