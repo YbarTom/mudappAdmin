@@ -221,7 +221,7 @@ const Test = () => {
   
           {showWhiteBox && <WhiteBox />}
           {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
-          {showLesson && <CreateLesson />}
+          {showLesson && <CreateLesson clickHandler={handleSubmitLesson}/>}
         </div>
       )}
     </>
