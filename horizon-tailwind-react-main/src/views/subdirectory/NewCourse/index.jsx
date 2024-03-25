@@ -7,6 +7,7 @@ import { color } from '@chakra-ui/system';
 import FlashCardInsertBox from './components/FlashCardInsertBox';
 import WhiteBox from './components/WhiteBox';
 import CreateCourseBox from './components/CreateCourseBox';
+import CreateLevel from './components/CreateLevel';
 
 const Test = () => {
   const [showCourse, setShowCourse] = useState(true)
@@ -215,7 +216,7 @@ const Test = () => {
           </div>
   
           {showWhiteBox && <WhiteBox />}
-          {showLevel && <FlashCardInsertBox />}
+          {showLevel && <CreateLevel />}
         </div>
       )}
     </>
