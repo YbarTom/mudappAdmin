@@ -38,5 +38,21 @@
     "title": "asds",
     "status": 0,
     "lessons": []
+  },
+  {
+    "id": 6,
+    "idCourse": 64,
+    "part": "ty",
+    "title": "ty",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 7,
+    "idCourse": 65,
+    "part": "1",
+    "title": "Derivades 1",
+    "status": 0,
+    "lessons": []
   }
 ]

@@ -150,6 +150,8 @@ const Test = () => {
   };
 
   const handleSubmitLesson = async (e) => {
+    setShowLesson(false);
+    setShowWhiteBox(true);
     e.preventDefault();
 
     try {
