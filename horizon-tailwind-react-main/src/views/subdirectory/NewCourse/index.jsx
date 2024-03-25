@@ -10,6 +10,8 @@ import CreateCourseBox from './components/CreateCourseBox';
 
 const Test = () => {
   const [showCourse, setShowCourse] = useState(true)
+  const [showLevel, setShowLevel] = useState(false)
+  const [showWhiteBox, setShowWhiteBox] = useState(false)
   //setShowCourse(false)
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
@@ -49,6 +51,7 @@ const Test = () => {
   const handleSubmitCourse = async ( titleInput, photoInput) => {
 
     setShowCourse(false)
+    setShowWhiteBox(true)
     setFormDataCourse({title: titleInput, photo: photoInput})
 
     try {
@@ -206,7 +209,7 @@ const Test = () => {
             <CourseSectionPlus />
           </div>
   
-          <FlashCardInsertBox />
+          {showWhiteBox && <WhiteBox />}
         </div>
       )}
     </>
