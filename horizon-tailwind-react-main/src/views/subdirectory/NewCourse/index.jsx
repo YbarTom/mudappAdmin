@@ -51,11 +51,12 @@ const Test = () => {
     setFormDataFlashCard({ ...formDataFlashCard, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitCourse = async ( titleInput, photoInput) => {
+  const handleSubmitCourse = async (titleInput, photoInput) => {
 
     setShowCourse(false)
     setShowWhiteBox(true)
-    setFormDataCourse({title: titleInput, photo: photoInput})
+    setFormDataCourse({ title: titleInput, photo: photoInput })
+    console.log(formDataCourse)
 
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
@@ -91,9 +92,15 @@ const Test = () => {
     }
   };
 
-  const handleSubmitLevel = async () => {
+  const handleSubmitLevel = async (titleInput, partInput) => {
+
+    console.log(titleInput)
+    console.log(partInput)
 
     try {
+      setFormDataLevel({ title: titleInput, idCourse: formDataCourse.id, part: partInput })
+
+      console.log(formDataLevel)
       const response = await fetch('http://localhost:3001/guardar-datos-level', {
         method: 'POST',
         headers: {
@@ -120,9 +127,9 @@ const Test = () => {
         });
 
         const data2 = await response2.json();
-        console.log(data2[data2.length-1]);
-        
-        setLevels(prevLevels => [...prevLevels, data2[data2.length-1]]);
+        console.log(data2[data2.length - 1]);
+
+        setLevels(prevLevels => [...prevLevels, data2[data2.length - 1]]);
 
         console.log("AAA")
 
@@ -198,7 +205,7 @@ const Test = () => {
   return (
     <>
       {showCourse ? (
-        <CreateCourseBox clickHandler={handleSubmitCourse}/>
+        <CreateCourseBox clickHandler={handleSubmitCourse} />
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
           <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
@@ -213,11 +220,11 @@ const Test = () => {
             {levels.map((level, index) => (
               <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
             ))}
-            <CourseSectionPlus clickhandler={handleShowLevel}/>
+            <CourseSectionPlus clickhandler={handleShowLevel} />
           </div>
-  
+
           {showWhiteBox && <WhiteBox />}
-          {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
+          {showLevel && <CreateLevel clickHandler={handleSubmitLevel} />}
         </div>
       )}
     </>

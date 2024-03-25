@@ -51,6 +51,10 @@ app.post('/guardar-datos-level', async (req, res) => {
   try {
     const { title, idCourse, part } = req.body;
 
+    console.log(title)
+    console.log("E")
+    console.log(idCourse)
+    console.log(part)
     // Leer los datos actuales del archivo JSON de cursos
     const coursesData = await fs.readFile('courses.json', 'utf8');
     const courses = JSON.parse(coursesData);

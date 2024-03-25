@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input } from "./Input";
 import { ButtonLogOut } from "./randomButton";
 
-const CreateLevel = ({clickHandler}) => {
+const CreateLevel = ({ clickHandler }) => {
 
     const [title, setTitle] = useState(""); // Estado para el valor del título
     const [part, setPart] = useState(""); // Estado para el valor de la foto
@@ -35,7 +35,7 @@ const CreateLevel = ({clickHandler}) => {
         }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <Input placeholder="Title" value={title} onChange={handleTitleChange} />
-                <Input placeholder="Foto" value={part} onChange={handlePartChange}/>
+                <Input placeholder="Part" value={part} onChange={handlePartChange} />
                 <ButtonLogOut text={"Create new course"} type={"blue"} clickHandler={handleClick}></ButtonLogOut>
             </div>
 
