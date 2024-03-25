@@ -32,6 +32,7 @@ const CreateCourseBox = ({ clickHandler }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "20px"
         }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 {/* Pasar las funciones de cambio como propiedades a los inputs */}
