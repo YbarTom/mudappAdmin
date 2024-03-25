@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import CourseSection from './components/CourseSection';
 import Level from './components/Level';
 import CourseSectionPlus from './components/CoursSectionPlus';
+import FlashCardBar from './components/FlashCardBar';
+import Level from './components/Level';
+import { color } from '@chakra-ui/system';
+import FlashCardInsertBox from './components/FlashCardInsertBox';
 
 const Test = () => {
   const [levels, setLevels] = useState([]);
@@ -18,6 +22,7 @@ const Test = () => {
     title: '',
     idLevel: 0
   });
+
   const [formDataFlashCard, setFormDataFlashCard] = useState({
     title: '',
   });
@@ -174,10 +179,8 @@ const Test = () => {
     } catch (error) {
       console.error('Error al enviar los datos:', error);
     }
-  };
-
+  }
   const handleSubmitFlashCard = async (e) => {
-    e.preventDefault();
     setShowFourForm(true);
   };
 
@@ -187,53 +190,26 @@ const Test = () => {
 
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
-      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)' }}>
-        {levels.map((level, index) => (
-          <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
-        ))}
+      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
+        <style>
+          {`
+      /* Para navegadores webkit (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    `}
+        </style>
+        <Level />
+        <Level />
+        <Level />
+        <Level />
+        <Level />
+        <Level />
         <CourseSectionPlus></CourseSectionPlus>
       </div>
-      <div> </div>
-      <div>
-        <div>
-          <h2>Introduce tus datos:</h2>
-          <form onSubmit={handleSubmitCourse}>
-            <div>
-              <label htmlFor="title">Nombre del curso:</label>
-              <input type="text" id="title" name="title" value={formDataCourse.title} onChange={handleChangeCourse} />
-            </div>
-            <div>
-              <label htmlFor="photo">Foto:</label>
-              <input type="text" id="photo" name="photo" value={formDataCourse.photo} onChange={handleChangeCourse} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-        <div>
-          <h2>Segundo formulario:</h2>
-          <form onSubmit={handleSubmitLevel}>
-            <div>
-              <label htmlFor="title">Nombre del Nivel:</label>
-              <input type="text" id="title" name="title" value={formDataLevel.title} onChange={handleChangeLevel} />
-            </div>
-            <div>
-              <label htmlFor="part">Parte:</label>
-              <input type="number" id="part" name="part" value={formDataLevel.part} onChange={handleChangeLevel} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-        <div>
-          <h2>Tercer formulario:</h2>
-          <form onSubmit={handleSubmitLesson}>
-            <div>
-              <label htmlFor="title">Nombre de la lesson:</label>
-              <input type="text" id="title" name="title" value={formDataLesson.title} onChange={handleChangeLesson} />
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-      </div>
+
+      <FlashCardInsertBox/>
+
     </div>
   );
 };
