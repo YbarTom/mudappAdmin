@@ -4,6 +4,7 @@ import Lesson from "./Lesson";
 import CourseSection from "./CourseSection";
 import LessonPlus from "./LessonPlus";
 import FlashCardBox from "./FlashCardBox";
+
 const Level = ({ title, parte, status, className, id, onClickArrow, lessons, clickHandler }) => {
   const [showLessons, setShowLessons] = useState(false);
 

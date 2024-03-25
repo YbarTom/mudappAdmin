@@ -96,7 +96,8 @@ const Test = () => {
 
     console.log(titleInput)
     console.log(partInput)
-
+    setShowLevel(false);
+    setShowWhiteBox(true);
     try {
       setFormDataLevel({ title: titleInput, idCourse: formDataCourse.id, part: partInput })
 
@@ -194,6 +195,8 @@ const Test = () => {
   };
 
   const addLessontoLevel = async (id) => {
+    setShowWhiteBox(false);
+    setShowLesson(true);
     setFormDataLesson({ ...formDataLesson, idLevel: id });
   };
 
@@ -224,7 +227,8 @@ const Test = () => {
           </div>
 
           {showWhiteBox && <WhiteBox />}
-          {showLevel && <CreateLevel clickHandler={handleSubmitLevel} />}
+          {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
+          {showLesson && <CreateLesson />}
         </div>
       )}
     </>
