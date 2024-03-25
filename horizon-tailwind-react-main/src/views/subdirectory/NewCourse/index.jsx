@@ -9,6 +9,7 @@ import WhiteBox from './components/WhiteBox';
 import CreateCourseBox from './components/CreateCourseBox';
 import CreateLevel from './components/CreateLevel';
 import CreateLesson from './components/CreateLesson';
+import { TiThLarge } from 'react-icons/ti';
 
 const Test = () => {
   const [showCourse, setShowCourse] = useState(true)
@@ -149,19 +150,24 @@ const Test = () => {
     }
   };
 
-  const handleSubmitLesson = async (e) => {
-    e.preventDefault();
+  const handleSubmitLesson = async (titleInput) => {
+
+    console.log(titleInput)
+
+
 
     try {
+
+      const formData = { title: titleInput, idLevel: formDataLesson.idLevel };
+
+      setFormDataLesson(formData)
+
       const response = await fetch('http://localhost:3001/guardar-datos-lesson', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          title: formDataLesson.title,
-          idLevel: formDataLesson.idLevel
-        })
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
