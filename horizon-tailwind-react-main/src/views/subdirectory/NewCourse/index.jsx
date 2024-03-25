@@ -151,10 +151,8 @@ const Test = () => {
   };
 
   const handleSubmitLesson = async (titleInput) => {
-
-    console.log(titleInput)
-
-
+    setShowLesson(false);
+    setShowWhiteBox(true);
 
     try {
 
