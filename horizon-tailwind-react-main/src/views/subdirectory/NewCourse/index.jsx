@@ -3,7 +3,6 @@ import CourseSection from './components/CourseSection';
 import Level from './components/Level';
 import CourseSectionPlus from './components/CoursSectionPlus';
 import FlashCardBar from './components/FlashCardBar';
-import Level from './components/Level';
 import { color } from '@chakra-ui/system';
 import FlashCardInsertBox from './components/FlashCardInsertBox';
 
@@ -26,9 +25,6 @@ const Test = () => {
   const [formDataFlashCard, setFormDataFlashCard] = useState({
     title: '',
   });
-  const [showSecondForm, setShowSecondForm] = useState(false);
-  const [showThirdForm, setShowThirdForm] = useState(false);
-  const [showFourForm, setShowFourForm] = useState(false);
 
   const handleChangeCourse = (e) => {
     setFormDataCourse({ ...formDataCourse, [e.target.name]: e.target.value });
@@ -48,8 +44,6 @@ const Test = () => {
 
   const handleSubmitCourse = async (e) => {
     e.preventDefault();
-
-    setShowSecondForm(true);
 
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
@@ -108,7 +102,6 @@ const Test = () => {
 
       if (response.ok) {
         console.log('Datos guardados exitosamente level');
-        setShowThirdForm(true);
 
         const response2 = await fetch(`http://localhost:3001/getLevels/${formDataLevel.idCourse}`, {
           method: 'POST',
@@ -172,7 +165,6 @@ const Test = () => {
 
         // Set the state with the updated levels array
         setLevels(updatedLevels);
-        //setShowFourForm(true);
       } else {
         console.error('Error al guardar datos.');
       }
@@ -181,7 +173,6 @@ const Test = () => {
     }
   }
   const handleSubmitFlashCard = async (e) => {
-    setShowFourForm(true);
   };
 
   const addLessontoLevel = async (id) => {
@@ -199,13 +190,10 @@ const Test = () => {
       }
     `}
         </style>
-        <Level />
-        <Level />
-        <Level />
-        <Level />
-        <Level />
-        <Level />
-        <CourseSectionPlus></CourseSectionPlus>
+        {levels.map((level, index) => (
+          <Level key={index} title={level.title} parte={level.part} lessons={level.lessons} clickHandler={addLessontoLevel} id={level.id} />
+        ))}
+        <CourseSectionPlus/>
       </div>
 
       <FlashCardInsertBox/>
