@@ -1,3 +1,4 @@
+// En randomButton.jsx
 import { styled } from "styled-components";
 
 const MyButton = styled.button`
@@ -26,9 +27,16 @@ const TextWrapper = styled.div`
   width: fit-content;
 `;
 
-export const ButtonLogOut = ({ text, type }) => {
+export const ButtonLogOut = ({ text, type, clickHandler }) => {
+  const handleClick = () => {
+    // Llamar a clickHandler y pasar los valores de los inputs como argumentos
+    if (clickHandler) {
+      clickHandler();
+    }
+  };
+
   return (
-    <MyButton type={type}>
+    <MyButton type={type} onClick={handleClick}>
       <TextWrapper>{text}</TextWrapper>
     </MyButton>
   );

@@ -44,7 +44,6 @@ const IconWrapper = styled.div`
 `;
 
 
-
 export const Input = ({ showIcon, placeholder, value, onChange }) => {
   return (
     <InputWrapper>

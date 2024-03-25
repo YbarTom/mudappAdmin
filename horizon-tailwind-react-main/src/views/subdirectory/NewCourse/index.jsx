@@ -8,7 +8,7 @@ import FlashCardInsertBox from './components/FlashCardInsertBox';
 import CreateCourseBox from './components/CreateCourseBox';
 
 const Test = () => {
-  const [showCourse, setShowCourse] = useState(false)
+  const [showCourse, setShowCourse] = useState(true)
   const [levels, setLevels] = useState([]);
   const [formDataCourse, setFormDataCourse] = useState({
     title: '',
@@ -44,8 +44,10 @@ const Test = () => {
     setFormDataFlashCard({ ...formDataFlashCard, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitCourse = async (e) => {
-    e.preventDefault();
+  const handleSubmitCourse = async ( titleInput, photoInput) => {
+
+    setShowCourse(false)
+    setFormDataCourse({title: titleInput, photo: photoInput})
 
     try {
       const response = await fetch('http://localhost:3001/guardar-datos-course', {
@@ -184,7 +186,7 @@ const Test = () => {
   return (
     <>
       {showCourse ? (
-        <CreateCourseBox />
+        <CreateCourseBox clickHandler={handleSubmitCourse}/>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: "10px" }}>
           <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 100px)', scrollbarWidth: 'none', /* Para Firefox */ }}>
