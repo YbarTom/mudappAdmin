@@ -188,6 +188,8 @@ const Test = () => {
   };
 
   const addLessontoLevel = async (id) => {
+    setShowWhiteBox(false);
+    setShowLesson(true);
     setFormDataLesson({ ...formDataLesson, idLevel: id });
   };
 
