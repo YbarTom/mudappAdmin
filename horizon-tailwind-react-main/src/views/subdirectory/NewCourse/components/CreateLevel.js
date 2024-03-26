@@ -28,7 +28,7 @@ const CreateLevel = ({ clickHandler }) => {
             gridColumn: '2/ span 2 ',
             borderRadius: "16px",
             marginLeft: "15px",
-            height: "100vh",
+            height: "calc(100vh - 130px)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

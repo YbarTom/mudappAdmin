@@ -28,7 +28,7 @@ const CreateCourseBox = ({ clickHandler }) => {
             gridColumn: '1/ span 3 ',
             borderRadius: "16px",
             marginLeft: "15px",
-            height: "calc(100vh - 151px)",
+            height: "calc(100vh - 150px)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
