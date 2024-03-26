@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
+import { ButtonLogOut } from "./randomButton";
 
 const InputContainer = styled.div`
     display: flex;
@@ -53,6 +54,9 @@ export const RelateComponent = () => {
                 </div>
             ))}
             <ButtonFlashCardPlus clickHandler={handleClickPlus} />
+            <div style={{marginTop:"20px"}}>
+            <ButtonLogOut text={"Save"} type={"blue"} />
+            </div>
         </div>
     );
 };

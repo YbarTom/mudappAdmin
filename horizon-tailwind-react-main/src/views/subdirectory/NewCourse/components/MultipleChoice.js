@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextAreaEditor from "./TextAreaWithoutButton";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
+import {ButtonLogOut} from "./randomButton";
 
 const MultipleChoice = () => {
     const [corrects, setCorrects] = useState([]);
@@ -41,6 +42,9 @@ const MultipleChoice = () => {
                 ))}
 
                 <ButtonFlashCardPlus clickHandler={()=>addIncorrect("pera")}/>
+            </div>
+            <div style={{marginTop:"20px"}}>
+            <ButtonLogOut text={"Save"} type={"blue"} />
             </div>
         </div>
     );

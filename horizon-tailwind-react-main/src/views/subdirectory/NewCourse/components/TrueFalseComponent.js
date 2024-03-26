@@ -4,7 +4,7 @@ import { ButtonTrueFalse } from "./ButtonTrueFalse";
 import { ThumbsUp4 } from "../icons/ThumbsUp4";
 import { ThumbsDown4 } from "../icons/ThumbsDown4";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
-
+import { ButtonLogOut } from "./randomButton";
 const QuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,7 +110,10 @@ export const TrueFalseComponent = () => {
           </ButtonsContainer>
         </div>
       ))}
-      
+      <div style={{marginTop:"20px"}}>
+            <ButtonLogOut text={"Save"} type={"blue"} />
+            </div>
+
     </QuestionContainer>
   );
 };

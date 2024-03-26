@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextAreaEditor from "./TextAreaComplete";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
-
+import { ButtonLogOut } from "./randomButton";
 const Complete = () => {
     const [flashcards, setFlashcards] = useState([]);
     const [incorrects, setIncorrects] = useState([]);
@@ -35,6 +35,10 @@ const Complete = () => {
                 ))}
                 <ButtonFlashCardPlus clickHandler={() => addFlashcard("Patata")} />
             </div>
+            <div style={{marginTop:"20px"}}>
+            <ButtonLogOut text={"Save"} type={"blue"} />
+            </div>
+
         </div>
     );
 };
