@@ -25,7 +25,7 @@ const MultipleChoice = () => {
     };
 
     return (
-        <div style={{ margin: "20px" }}>
+        <div style={{ margin: "20px",height: "calc(100vh - 250px)" }}>
             <h1>Multiple Choice</h1>
             <TextAreaEditor />
             <p><b>Respuestas Correctas:</b></p>

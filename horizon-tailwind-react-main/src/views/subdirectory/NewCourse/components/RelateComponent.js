@@ -37,7 +37,8 @@ export const RelateComponent = () => {
     };
 
     return (
-        <div>
+        <div style={{  height: "calc(100vh - 275px)"
+        }}>
             {pairs.map((pair, index) => (
                 <div key={index}>
                     <p>{`Pregunta ${index+1}`}</p>

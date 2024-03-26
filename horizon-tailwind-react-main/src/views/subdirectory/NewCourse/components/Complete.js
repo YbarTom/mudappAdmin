@@ -20,7 +20,9 @@ const Complete = () => {
     };
 
     return (
-        <div style={{ margin: "20px" }}>
+        <div style={{
+            margin: "20px", height: "calc(100vh - 250px)",
+        }}>
             <h1>Complete</h1>
             <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
@@ -35,8 +37,8 @@ const Complete = () => {
                 ))}
                 <ButtonFlashCardPlus clickHandler={() => addFlashcard("Patata")} />
             </div>
-            <div style={{marginTop:"20px"}}>
-            <ButtonLogOut text={"Save"} type={"blue"} />
+            <div style={{ marginTop: "20px" }}>
+                <ButtonLogOut text={"Save"} type={"blue"} />
             </div>
 
         </div>

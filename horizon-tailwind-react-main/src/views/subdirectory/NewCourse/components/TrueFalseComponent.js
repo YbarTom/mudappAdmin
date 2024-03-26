@@ -9,6 +9,7 @@ const QuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
+  height: calc(100vh - 285px);
 `;
 
 const TextField = styled.input`
