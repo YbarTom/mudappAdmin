@@ -30,8 +30,8 @@ const Lesson = ({ locked = true, title, status, progress, ruta, idLesson, flashc
   return (
     <div>
       <LessonContainer>
-        <LessonIcon status={status} progress={progress} ruta={ruta} idLesson={idLesson} />
-        <LessonIntroduction title={title} status={status} />
+        <LessonIcon status={status="locked"} progress={progress} ruta={ruta} idLesson={idLesson} />
+        <LessonIntroduction title={title} status={status="locked"} />
         {arrowVisible ? (
           <ArrowImage src={arrowDown} alt="Locked Icon" onClick={toggleArrow} />
         ) : (
