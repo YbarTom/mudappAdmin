@@ -11,6 +11,11 @@ const InputContainer = styled.div`
     margin-bottom: 10px;
 `;
 
+const ScrollableContainer = styled.div`
+    height: calc(100vh - 275px);
+    overflow-y: auto;
+`;
+
 export const RelateComponent = () => {
 
     const [pairs, setPairs] = useState([
@@ -37,8 +42,7 @@ export const RelateComponent = () => {
     };
 
     return (
-        <div style={{  height: "calc(100vh - 275px)"
-        }}>
+        <ScrollableContainer>
             {pairs.map((pair, index) => (
                 <div key={index}>
                     <p>{`Pregunta ${index+1}`}</p>
@@ -56,8 +60,8 @@ export const RelateComponent = () => {
             ))}
             <ButtonFlashCardPlus clickHandler={handleClickPlus} />
             <div style={{marginTop:"20px"}}>
-            <ButtonLogOut text={"Save"} type={"blue"} />
+                <ButtonLogOut text={"Save"} type={"blue"} />
             </div>
-        </div>
+        </ScrollableContainer>
     );
 };

@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "idCourse": 1,
+    "part": "d",
+    "title": "d",
+    "status": 0,
+    "lessons": [
+      16
+    ]
+  }
+]

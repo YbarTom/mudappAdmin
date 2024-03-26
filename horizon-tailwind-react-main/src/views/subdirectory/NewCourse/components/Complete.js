@@ -3,6 +3,14 @@ import TextAreaEditor from "./TextAreaComplete";
 import ButtonFlashCard from "./ButtonFlashCard";
 import ButtonFlashCardPlus from "./ButtonFlashCardPlus";
 import { ButtonLogOut } from "./randomButton";
+import styled from "styled-components";
+
+const ScrollableContainer = styled.div`
+    margin: 20px;
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+`;
+
 const Complete = () => {
     const [flashcards, setFlashcards] = useState([]);
     const [incorrects, setIncorrects] = useState([]);
@@ -20,9 +28,7 @@ const Complete = () => {
     };
 
     return (
-        <div style={{
-            margin: "20px", height: "calc(100vh - 250px)",
-        }}>
+        <ScrollableContainer>
             <h1>Complete</h1>
             <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
@@ -40,8 +46,7 @@ const Complete = () => {
             <div style={{ marginTop: "20px" }}>
                 <ButtonLogOut text={"Save"} type={"blue"} />
             </div>
-
-        </div>
+        </ScrollableContainer>
     );
 };
 

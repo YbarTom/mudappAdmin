@@ -10,6 +10,8 @@ const QuestionContainer = styled.div`
   flex-direction: column;
   margin: 10px;
   height: calc(100vh - 285px);
+      overflow-y: auto;
+
 `;
 
 const TextField = styled.input`
