@@ -68,5 +68,15 @@
     "lessons": [
       7
     ]
+  },
+  {
+    "id": 8,
+    "idCourse": 8,
+    "part": "d",
+    "title": "d",
+    "status": 0,
+    "lessons": [
+      8
+    ]
   }
 ]

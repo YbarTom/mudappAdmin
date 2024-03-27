@@ -48,10 +48,9 @@ export const RelateComponent = ({idLesson}) => {
     const [title, setTitle] = useState("");
     const handleChangeTitle = (event) => {
         setTitle(event.target.value); // Actualiza el estado del título
-      };
+    };
 
     const crearFlashCard = () => {
-
         console.log(pairs)
 
         const flashCardEnviar = {
@@ -81,11 +80,11 @@ export const RelateComponent = ({idLesson}) => {
                     <InputContainer>
                         <ButtonFlashCard
                             initialText={pair.question1}
-                            onChange={(value) => handleInputChange(index, "question1", value)}
+                            clickHandler={(value) => handleInputChange(index, "question1", value)}
                         />
                         <ButtonFlashCard
                             initialText={pair.question2}
-                            onChange={(value) => handleInputChange(index, "question2", value)}
+                            clickHandler={(value) => handleInputChange(index, "question2", value)}
                         />
                     </InputContainer>
                 </div>
