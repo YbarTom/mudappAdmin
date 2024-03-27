@@ -19,6 +19,9 @@ const Complete = () => {
     const handleSave = () => {
         const JSON = {
             title: textareaContent, // Utiliza el contenido del estado para el título del JSON
+            subtitle: "Subtitle",
+            respostes: flashcards.map((flashcard, index) => ({ index, text: flashcard })),
+
         };
         console.log(JSON);
     };
