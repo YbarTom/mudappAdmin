@@ -27,7 +27,7 @@ const Text = styled.span`
   font-weight: bold;
 `;
 
-const ButtonFlashCard = ({ initialText = "", clickHandler, type = "default", index }) => {
+const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "default", index }) => {
   const [text, setText] = useState(initialText);
   const [editing, setEditing] = useState(false);
 
