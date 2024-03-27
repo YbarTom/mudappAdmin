@@ -34,7 +34,7 @@ const ButtonsContainer = styled.div`
   justify-content: flex-start;
 `;
 
-export const TrueFalseComponent = () => {
+export const TrueFalseComponent = ({ idLesson }) => {
   const [types, setTypes] = useState([
     {
       text: "Pregunta",
@@ -83,6 +83,32 @@ export const TrueFalseComponent = () => {
     ]);
   };
 
+  const crearFlashCard = () => {
+    const flashCardEnviar = {
+      id: 0,
+      idLesson: idLesson, // Assuming idLesson is defined somewhere
+      type: "TrueFalse",
+      title: title, // Assuming title is defined somewhere
+      subtitle: "subtitle222",
+      options: [],
+      correctValues: []
+    };
+
+    for (let i = 0; i < types.length; i++) {
+      flashCardEnviar.options.push({
+        idOption: i + 1,
+        text: types[i].text
+      });
+
+      flashCardEnviar.correctValues.push({
+        idOption: i + 1,
+        value: types[i].type1 === "correct" ? true : false
+      });
+    }
+
+    console.log(flashCardEnviar);
+  };
+
   return (
     <QuestionContainer>
       {/* Campo de entrada de texto para el título */}
@@ -113,9 +139,12 @@ export const TrueFalseComponent = () => {
           </ButtonsContainer>
         </div>
       ))}
-      <div style={{marginTop:"20px"}}>
-            <ButtonLogOut text={"Save"} type={"blue"} />
-            </div>
+      <div style={{ marginTop: "20px" }}>
+        <ButtonLogOut text={"+"} type={"blue"} clickHandler={handleClickPlus} />
+      </div>
+      <div style={{ marginTop: "20px" }}>
+        <ButtonLogOut text={"Save"} type={"blue"} clickHandler={crearFlashCard} />
+      </div>
 
     </QuestionContainer>
   );

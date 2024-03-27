@@ -177,7 +177,9 @@ const Test = () => {
         });
 
         const data2 = await response2.json();
+        
         console.log(data2);
+        formDataFlashCard.idLesson = data2.id
         const updatedLevels = levels.map(level => {
           // If the level id matches the idLevel from formDataLesson, update its lessons
           if (level.id === formDataLesson.idLevel) {
@@ -244,7 +246,7 @@ const Test = () => {
           {showWhiteBox && <WhiteBox />}
           {showLevel && <CreateLevel clickHandler={handleSubmitLevel}/>}
           {showLesson && <CreateLesson clickHandler={handleSubmitLesson}/>}
-          {showFlashCard && <FlashCardInsertBox />}
+          {showFlashCard && <FlashCardInsertBox idLesson={formDataFlashCard.idLesson}/>}
         </div>
       )}
     </>

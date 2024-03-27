@@ -16,7 +16,7 @@ const ScrollableContainer = styled.div`
     overflow-y: auto;
 `;
 
-export const RelateComponent = () => {
+export const RelateComponent = ({idLesson}) => {
 
     const [pairs, setPairs] = useState([
         {
@@ -27,25 +27,57 @@ export const RelateComponent = () => {
 
     const handleInputChange = (index, field, value) => {
         const updatedPairs = [...pairs];
-        updatedPairs[index][field] = value;
+        updatedPairs[index] = {
+            ...updatedPairs[index],
+            [field]: value
+        };
+        console.log(updatedPairs); // Log updatedPairs to inspect changes
         setPairs(updatedPairs);
     };
 
     const handleClickPlus = () => {
         setPairs(prevPairs => [
-          ...prevPairs,
-          {
-            question1: "add text",
-            question2: "add text"
-          }
+            ...prevPairs,
+            {
+                question1: "add text",
+                question2: "add text"
+            }
         ]);
+    };
+
+    const [title, setTitle] = useState("");
+    const handleChangeTitle = (event) => {
+        setTitle(event.target.value); // Actualiza el estado del título
+      };
+
+    const crearFlashCard = () => {
+
+        console.log(pairs)
+
+        const flashCardEnviar = {
+            id: 0,
+            idLesson: idLesson, // Assuming idLesson is defined somewhere
+            type: "LessonRelate",
+            title: title, // Assuming title is defined somewhere
+            subtitle: "subtitle222",
+            options: [],
+            correctValues: []
+        };
+
+        console.log(flashCardEnviar);
     };
 
     return (
         <ScrollableContainer>
+            <input
+                type="text"
+                placeholder="Ingresa el título"
+                value={title}
+                onChange={handleChangeTitle}
+            />
             {pairs.map((pair, index) => (
                 <div key={index}>
-                    <p>{`Pregunta ${index+1}`}</p>
+                    <p>{`Pregunta ${index + 1}`}</p>
                     <InputContainer>
                         <ButtonFlashCard
                             initialText={pair.question1}
@@ -59,8 +91,8 @@ export const RelateComponent = () => {
                 </div>
             ))}
             <ButtonFlashCardPlus clickHandler={handleClickPlus} />
-            <div style={{marginTop:"20px"}}>
-                <ButtonLogOut text={"Save"} type={"blue"} />
+            <div style={{ marginTop: "20px" }}>
+                <ButtonLogOut text={"Save"} type={"blue"} clickHandler={crearFlashCard} />
             </div>
         </ScrollableContainer>
     );

@@ -5,7 +5,7 @@ import Relate from "./Relate";
 import TrueFalse from "./TrueFalse";
 import Complete from "./Complete";
 
-const FlashCardInsertBox = () => {
+const FlashCardInsertBox = ({idLesson}) => {
   const [selectedComponent, setSelectedComponent] = useState(0);
 
   const handleComponentSelect = (index) => {
@@ -21,7 +21,7 @@ const FlashCardInsertBox = () => {
       componentToDisplay = <MultipleChoice />;
       break;
     case 2:
-      componentToDisplay = <TrueFalse />;
+      componentToDisplay = <TrueFalse idLesson={idLesson}/>;
       break;
     case 3:
         componentToDisplay = <Relate />;
