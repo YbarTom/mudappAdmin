@@ -57,7 +57,7 @@ const Complete = () => {
         const updatedIncorrects = [...incorrects];
         updatedIncorrects[index] = newText;
         setIncorrects(updatedIncorrects);
-      };
+    };
       
 
     return (
