@@ -21,7 +21,7 @@ const Complete = () => {
         const JSON = {
             title: textareaContent,
             subtitle: "Subtitle",
-            respostes: flashcards.map((flashcard, index) => ({ index, text: flashcard })),
+            respostes: flashcards.map((flashcard, index) => ({ espacio: index, text: flashcard })),
         };
         console.log(JSON);
     };
