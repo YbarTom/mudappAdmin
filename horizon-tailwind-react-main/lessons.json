@@ -2,132 +2,13 @@
   {
     "id": 1,
     "idLevel": 1,
-    "title": "a",
+    "title": "Principis de les derivades",
     "status": 0,
     "flashcards": []
   },
   {
     "id": 2,
-    "idLevel": 1,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 3,
-    "idLevel": 1,
-    "title": "c",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 4,
     "idLevel": 2,
-    "title": "c",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 5,
-    "idLevel": 3,
-    "title": "c",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 6,
-    "idLevel": 9,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 7,
-    "idLevel": 10,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 8,
-    "idLevel": 10,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 9,
-    "idLevel": 10,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 10,
-    "idLevel": 12,
-    "title": "a",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 11,
-    "idLevel": 6,
-    "title": "",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 12,
-    "idLevel": 7,
-    "title": "sdadgdsf",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 13,
-    "idLevel": 8,
-    "title": "saddddd",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 14,
-    "idLevel": 8,
-    "title": "saddddd",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 15,
-    "idLevel": 8,
-    "title": "saddddd",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 16,
-    "idLevel": 1,
-    "title": "d",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 17,
-    "idLevel": 2,
-    "title": "e",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 18,
-    "idLevel": 3,
-    "title": "t",
-    "status": 0,
-    "flashcards": []
-  },
-  {
-    "id": 19,
-    "idLevel": 4,
     "title": "e",
     "status": 0,
     "flashcards": []

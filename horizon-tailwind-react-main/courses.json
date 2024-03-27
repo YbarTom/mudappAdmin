@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "d",
-    "photo": "d",
+    "title": "Matematiques 1",
+    "photo": "a",
     "levels": [
       1
     ]
@@ -13,22 +13,6 @@
     "photo": "e",
     "levels": [
       2
-    ]
-  },
-  {
-    "id": 3,
-    "title": "t",
-    "photo": "t",
-    "levels": [
-      3
-    ]
-  },
-  {
-    "id": 4,
-    "title": "e",
-    "photo": "e",
-    "levels": [
-      4
     ]
   }
 ]

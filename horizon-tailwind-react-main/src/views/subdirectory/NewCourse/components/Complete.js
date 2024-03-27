@@ -53,6 +53,13 @@ const Complete = () => {
         setFlashcards(updatedFlashcards);
     };
 
+    const handleIncorrectsTextChange = (index, newText) => {
+        const updatedIncorrects = [...incorrects];
+        updatedIncorrects[index] = newText;
+        setIncorrects(updatedIncorrects);
+      };
+      
+
     return (
         <ScrollableContainer>
             <h1>Complete</h1>
@@ -65,7 +72,7 @@ const Complete = () => {
             <p><b>Incorrects:</b></p>
             <div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "10px" }}>
                 {incorrects.map((text, index) => (
-                    <ButtonFlashCard key={index} text={text} />
+                    <ButtonFlashCard key={index} text={text} clickHandler={handleIncorrectsTextChange} index={index} isIncorrect={true}/>
                 ))}
                 <ButtonFlashCardPlus clickHandler={() => addIncorrect("Patata")} />
             </div>

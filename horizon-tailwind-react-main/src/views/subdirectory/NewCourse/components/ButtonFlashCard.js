@@ -27,7 +27,7 @@ const Text = styled.span`
   font-weight: bold;
 `;
 
-const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "default", index }) => {
+const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "default", index, isIncorrect }) => {
   const [text, setText] = useState(initialText);
   const [editing, setEditing] = useState(false);
 
@@ -37,12 +37,12 @@ const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "defau
 
   const handleInputChange = (event) => {
     setText(event.target.value);
-    clickHandler(index, event.target.value);
+    clickHandler(index, event.target.value, isIncorrect); // Pasar isIncorrect como tercer argumento
   };
 
   const handleInputBlur = () => {
     setEditing(false);
-    clickHandler(index, text);
+    clickHandler(index, text, isIncorrect); // Pasar isIncorrect como tercer argumento
   };
 
   return (
@@ -61,6 +61,7 @@ const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "defau
     </StyledButton>
   );
 };
+
 
 ButtonFlashCard.propTypes = {
   initialText: PropTypes.string,
