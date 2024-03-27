@@ -10,7 +10,7 @@ import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
 import Blockquote from "@tiptap/extension-blockquote";
 
-const TextAreaEditor = () => {
+const TextAreaEditor = ({setContent}) => {
     const [editor, setEditor] = useState(null);
     var hmtl = "";
     const handleClick = () => {
@@ -114,7 +114,12 @@ const TextAreaEditor = () => {
                         class: "text-gray-800 sm:text-xl",
                     },
                 }),
+                
             ],
+            onUpdate: ({ editor }) => {
+                const text = editor.getText();
+                setContent(text); // Actualiza el estado del contenido del TextAreaEditor
+            },
         });
 
         setEditor(editorInstance);
