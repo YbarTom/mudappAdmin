@@ -6,7 +6,7 @@ import Paragraph from "@tiptap/extension-paragraph";
 import Bold from "@tiptap/extension-bold";
 import space from "assets/img/ColleBree/space.png";
 
-const TextAreaEditor = ({ onFlashcardsChange }) => {
+const TextAreaEditor = ({ onFlashcardsChange,setContent }) => {
     const [editor, setEditor] = useState(null);
     const [flashcards, setFlashcards] = useState([]);
 
@@ -58,6 +58,10 @@ const TextAreaEditor = ({ onFlashcardsChange }) => {
                     },
                 }),
             ],
+            onUpdate: ({ editor }) => {
+                const text = editor.getText();
+                setContent(text); // Actualiza el estado del contenido del TextAreaEditor
+            },
         });
 
         setEditor(editorInstance);

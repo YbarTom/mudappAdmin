@@ -14,7 +14,14 @@ const ScrollableContainer = styled.div`
 const Complete = () => {
     const [flashcards, setFlashcards] = useState([]);
     const [incorrects, setIncorrects] = useState([]);
+    const [textareaContent, setTextareaContent] = useState(""); // Estado para almacenar el contenido del TextAreaEditor
 
+    const handleSave = () => {
+        const JSON = {
+            title: textareaContent, // Utiliza el contenido del estado para el título del JSON
+        };
+        console.log(JSON);
+    };
     const handleFlashcardsChange = (newFlashcards) => {
         setFlashcards(newFlashcards);
     };
@@ -30,7 +37,7 @@ const Complete = () => {
     return (
         <ScrollableContainer>
             <h1>Complete</h1>
-            <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} />
+            <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} setContent={setTextareaContent}/>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                 {flashcards.map((text, index) => (
                     <ButtonFlashCard key={index} text={text} />
@@ -44,7 +51,7 @@ const Complete = () => {
                 <ButtonFlashCardPlus clickHandler={() => addFlashcard("Patata")} />
             </div>
             <div style={{ marginTop: "20px" }}>
-                <ButtonLogOut text={"Save"} type={"blue"} />
+            <ButtonLogOut text={"Save"} type={"blue"} clickHandler={handleSave} /> {/* Llama a la función handleSave al hacer clic */}
             </div>
         </ScrollableContainer>
     );
