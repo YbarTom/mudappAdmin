@@ -15,16 +15,22 @@ const ScrollableContainer = styled.div`
 const Complete = () => {
     const [flashcards, setFlashcards] = useState([]);
     const [incorrects, setIncorrects] = useState([]);
-    const [textareaContent, setTextareaContent] = useState(""); 
+    const [textareaContent, setTextareaContent] = useState("");
 
     const handleSave = () => {
+        const allFlashcards = [
+            ...flashcards.map((flashcard, index) => ({ espacio: index, text: flashcard, isCorrect: true })),
+            ...incorrects.map((incorrect, index) => ({ text: incorrect, isCorrect: false })),
+        ];
+
         const JSON = {
             title: textareaContent,
             subtitle: "Subtitle",
-            respostes: flashcards.map((flashcard, index) => ({ espacio: index, text: flashcard, isCorrect: true })),
+            respostes: allFlashcards,
         };
         console.log(JSON);
     };
+
 
     const handleFlashcardsChange = (newFlashcards) => {
         setFlashcards(newFlashcards);
@@ -32,6 +38,9 @@ const Complete = () => {
 
     const handleIncorrectsChange = (newIncorrects) => {
         setIncorrects(newIncorrects);
+    };
+    const addIncorrect = (text) => {
+        setIncorrects([...incorrects, text]);
     };
 
     const addFlashcard = (text) => {
@@ -58,7 +67,7 @@ const Complete = () => {
                 {incorrects.map((text, index) => (
                     <ButtonFlashCard key={index} text={text} />
                 ))}
-                <ButtonFlashCardPlus clickHandler={() => addFlashcard("Patata")} />
+                <ButtonFlashCardPlus clickHandler={() => addIncorrect("Patata")} />
             </div>
             <div style={{ marginTop: "20px" }}>
                 <ButtonLogOut text={"Save"} type={"blue"} clickHandler={handleSave} />
