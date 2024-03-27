@@ -18,5 +18,25 @@
     "lessons": [
       17
     ]
+  },
+  {
+    "id": 3,
+    "idCourse": 3,
+    "part": "t",
+    "title": "t",
+    "status": 0,
+    "lessons": [
+      18
+    ]
+  },
+  {
+    "id": 4,
+    "idCourse": 4,
+    "part": "e",
+    "title": "e",
+    "status": 0,
+    "lessons": [
+      19
+    ]
   }
 ]

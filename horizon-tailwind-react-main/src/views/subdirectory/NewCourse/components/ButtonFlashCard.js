@@ -1,7 +1,7 @@
+// ButtonFlashCard.js
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import styled from "styled-components";
-import plus from "assets/img/ColleBree/add.png";
 
 const StyledButton = styled.button`
   background-color: hsl(210, 20%, 98%);
@@ -20,14 +20,14 @@ const Input = styled.input`
   outline: none;
   font-family: "Manrope", Helvetica;
   font-size: 16px;
-  font-weight: bold; /* Mantén el negrita para el campo de entrada */
+  font-weight: bold;
 `;
 
 const Text = styled.span`
-  font-weight: bold; /* Mantén el negrita para el texto */
+  font-weight: bold;
 `;
 
-const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "default" }) => {
+const ButtonFlashCard = ({ initialText = "", clickHandler, type = "default", index }) => {
   const [text, setText] = useState(initialText);
   const [editing, setEditing] = useState(false);
 
@@ -37,10 +37,12 @@ const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "defau
 
   const handleInputChange = (event) => {
     setText(event.target.value);
+    clickHandler(index, event.target.value);
   };
 
   const handleInputBlur = () => {
     setEditing(false);
+    clickHandler(index, text);
   };
 
   return (
@@ -61,9 +63,10 @@ const ButtonFlashCard = ({ initialText = "add Text", clickHandler, type = "defau
 };
 
 ButtonFlashCard.propTypes = {
-  initialText: PropTypes.string.isRequired,
+  initialText: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
-  type: PropTypes.string
+  type: PropTypes.string,
+  index: PropTypes.number.isRequired
 };
 
 export default ButtonFlashCard;

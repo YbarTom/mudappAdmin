@@ -1,3 +1,4 @@
+// Complete.js
 import React, { useState } from "react";
 import TextAreaEditor from "./TextAreaComplete";
 import ButtonFlashCard from "./ButtonFlashCard";
@@ -14,17 +15,17 @@ const ScrollableContainer = styled.div`
 const Complete = () => {
     const [flashcards, setFlashcards] = useState([]);
     const [incorrects, setIncorrects] = useState([]);
-    const [textareaContent, setTextareaContent] = useState(""); // Estado para almacenar el contenido del TextAreaEditor
+    const [textareaContent, setTextareaContent] = useState(""); 
 
     const handleSave = () => {
         const JSON = {
-            title: textareaContent, // Utiliza el contenido del estado para el título del JSON
+            title: textareaContent,
             subtitle: "Subtitle",
             respostes: flashcards.map((flashcard, index) => ({ index, text: flashcard })),
-
         };
         console.log(JSON);
     };
+
     const handleFlashcardsChange = (newFlashcards) => {
         setFlashcards(newFlashcards);
     };
@@ -34,16 +35,22 @@ const Complete = () => {
     };
 
     const addFlashcard = (text) => {
-        setIncorrects([...incorrects, text]);
+        setFlashcards([...flashcards, text]);
+    };
+
+    const handleFlashcardTextChange = (index, newText) => {
+        const updatedFlashcards = [...flashcards];
+        updatedFlashcards[index] = newText;
+        setFlashcards(updatedFlashcards);
     };
 
     return (
         <ScrollableContainer>
             <h1>Complete</h1>
-            <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} setContent={setTextareaContent}/>
+            <TextAreaEditor onFlashcardsChange={handleFlashcardsChange} setContent={setTextareaContent} />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                 {flashcards.map((text, index) => (
-                    <ButtonFlashCard key={index} text={text} />
+                    <ButtonFlashCard key={index} text={text} index={index} clickHandler={handleFlashcardTextChange} />
                 ))}
             </div>
             <p><b>Incorrects:</b></p>
@@ -54,7 +61,7 @@ const Complete = () => {
                 <ButtonFlashCardPlus clickHandler={() => addFlashcard("Patata")} />
             </div>
             <div style={{ marginTop: "20px" }}>
-            <ButtonLogOut text={"Save"} type={"blue"} clickHandler={handleSave} /> {/* Llama a la función handleSave al hacer clic */}
+                <ButtonLogOut text={"Save"} type={"blue"} clickHandler={handleSave} />
             </div>
         </ScrollableContainer>
     );
