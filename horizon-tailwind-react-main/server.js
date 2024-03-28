@@ -328,14 +328,29 @@ app.delete('/courses/:id', async (req, res) => {
     // Escribir los datos actualizados en el archivo JSON de niveles
     await fs.writeFile('levels.json', JSON.stringify(levelsData, null, 2));
 
+    // Leer los datos actuales del archivo JSON de lecciones
+    const currentLessonsData = await fs.readFile('lessons.json', 'utf8');
+    let lessonsData = JSON.parse(currentLessonsData);
+
+    // Filtrar las lecciones para excluir las lecciones que tienen idLevel igual al ID de nivel eliminado
+    lessonsData = lessonsData.filter(lesson => {
+      const relatedLevel = levelsData.find(level => level.id === lesson.idLevel);
+      return relatedLevel ;
+    });
+
+    // Escribir los datos actualizados en el archivo JSON de lecciones
+    await fs.writeFile('lessons.json', JSON.stringify(lessonsData, null, 2));
+
     // Enviar una respuesta de éxito
     res.sendStatus(200);
 
   } catch (error) {
-    console.error('Error al eliminar el curso y los niveles correspondientes:', error);
+    console.error('Error al eliminar el curso, niveles y lecciones correspondientes:', error);
     res.sendStatus(500);
   }
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);

@@ -20,16 +20,6 @@
     ]
   },
   {
-    "id": 5,
-    "idCourse": 5,
-    "part": "sda",
-    "title": "sdsa",
-    "status": 0,
-    "lessons": [
-      5
-    ]
-  },
-  {
     "id": 6,
     "idCourse": 6,
     "part": "asdsa",
