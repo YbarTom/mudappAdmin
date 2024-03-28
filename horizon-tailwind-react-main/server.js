@@ -304,6 +304,54 @@ app.post('/getFlashCards/:id', async (req, res) => {
   }
 })
 
+app.delete('/courses/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    // Leer los datos actuales del archivo JSON de cursos
+    const currentCoursesData = await fs.readFile('courses.json', 'utf8');
+    let coursesData = JSON.parse(currentCoursesData);
+
+    // Filtrar los cursos para excluir los cursos con el ID proporcionado y también con idCourse igual al ID
+    coursesData = coursesData.filter(course => course.id !== id && course.idCourse !== id);
+
+    // Escribir los datos actualizados en el archivo JSON de cursos
+    await fs.writeFile('courses.json', JSON.stringify(coursesData, null, 2));
+
+    // Leer los datos actuales del archivo JSON de niveles
+    const currentLevelsData = await fs.readFile('levels.json', 'utf8');
+    let levelsData = JSON.parse(currentLevelsData);
+
+    // Filtrar los niveles para excluir los niveles con idCourse igual al ID
+    levelsData = levelsData.filter(level => level.idCourse !== id);
+
+    // Escribir los datos actualizados en el archivo JSON de niveles
+    await fs.writeFile('levels.json', JSON.stringify(levelsData, null, 2));
+
+    // Leer los datos actuales del archivo JSON de lecciones
+    const currentLessonsData = await fs.readFile('lessons.json', 'utf8');
+    let lessonsData = JSON.parse(currentLessonsData);
+
+    // Filtrar las lecciones para excluir las lecciones que tienen idLevel igual al ID de nivel eliminado
+    lessonsData = lessonsData.filter(lesson => {
+      const relatedLevel = levelsData.find(level => level.id === lesson.idLevel);
+      return relatedLevel ;
+    });
+
+    // Escribir los datos actualizados en el archivo JSON de lecciones
+    await fs.writeFile('lessons.json', JSON.stringify(lessonsData, null, 2));
+
+    // Enviar una respuesta de éxito
+    res.sendStatus(200);
+
+  } catch (error) {
+    console.error('Error al eliminar el curso, niveles y lecciones correspondientes:', error);
+    res.sendStatus(500);
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
