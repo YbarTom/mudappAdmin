@@ -16,7 +16,7 @@ const ScrollableContainer = styled.div`
     overflow-y: auto;
 `;
 
-export const RelateComponent = ({idLesson}) => {
+export const RelateComponent = ({ idLesson }) => {
 
     const [pairs, setPairs] = useState([
         {
@@ -25,14 +25,13 @@ export const RelateComponent = ({idLesson}) => {
         }
     ]);
 
-    const handleInputChange = (index, field, value) => {
-        const updatedPairs = [...pairs];
-        updatedPairs[index] = {
-            ...updatedPairs[index],
-            [field]: value
-        };
-        console.log(updatedPairs); // Log updatedPairs to inspect changes
-        setPairs(updatedPairs);
+    const handleInputChangeRelate = (index, field, value) => {
+
+        console.log(pairs[index][field])
+
+        const newPairs = [...pairs];
+        newPairs[index][field] = value;
+        setPairs(newPairs);
     };
 
     const handleClickPlus = () => {
@@ -80,11 +79,11 @@ export const RelateComponent = ({idLesson}) => {
                     <InputContainer>
                         <ButtonFlashCard
                             initialText={pair.question1}
-                            clickHandler={(value) => handleInputChange(index, "question1", value)}
+                            clickHandler={(value) => handleInputChangeRelate(index, "question1", value)}
                         />
                         <ButtonFlashCard
                             initialText={pair.question2}
-                            clickHandler={(value) => handleInputChange(index, "question2", value)}
+                            clickHandler={(value) => handleInputChangeRelate(index, "question2", value)}
                         />
                     </InputContainer>
                 </div>
