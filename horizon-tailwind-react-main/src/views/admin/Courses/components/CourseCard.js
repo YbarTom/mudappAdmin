@@ -68,7 +68,7 @@ const Icon = styled.img`
   cursor: pointer;
 `;
 
-const CourseCard = ({ text, onClick, foto = BannerFoto ,id}) => {
+const CourseCard = ({ text, onClick, foto = BannerFoto ,id,onDelete }) => {
   const [isViewVisible, setViewVisible] = useState(true);
   const toggleView = () => {
     setViewVisible(!isViewVisible);
@@ -76,17 +76,11 @@ const CourseCard = ({ text, onClick, foto = BannerFoto ,id}) => {
 
   const handleDeleteCourse = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/courses/${id}`, {
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error("Error al eliminar el curso");
-      }
-      console.log(response);
+      await onDelete(id);
     } catch (error) {
       console.error("Error al eliminar el curso:", error);
     }
-  }
+  };
   return (
     <CourseCardWrapper onClick={onClick} className=" !bg-white dark:!bg-navy-700" >
       <Frame foto={foto} />
