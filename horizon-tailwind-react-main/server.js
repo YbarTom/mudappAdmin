@@ -308,24 +308,35 @@ app.delete('/courses/:id', async (req, res) => {
   try {
     const id = parseInt(req.params.id);
 
-    // Leer los datos actuales del archivo JSON
-    const currentData = await fs.readFile('courses.json', 'utf8');
-    const jsonData = JSON.parse(currentData);
+    // Leer los datos actuales del archivo JSON de cursos
+    const currentCoursesData = await fs.readFile('courses.json', 'utf8');
+    let coursesData = JSON.parse(currentCoursesData);
 
-    // Filtrar los cursos para excluir el curso con el ID proporcionado
-    const updatedData = jsonData.filter(course => course.id !== id);
+    // Filtrar los cursos para excluir los cursos con el ID proporcionado y también con idCourse igual al ID
+    coursesData = coursesData.filter(course => course.id !== id && course.idCourse !== id);
 
-    // Escribir los datos actualizados en el archivo JSON
-    await fs.writeFile('courses.json', JSON.stringify(updatedData, null, 2));
+    // Escribir los datos actualizados en el archivo JSON de cursos
+    await fs.writeFile('courses.json', JSON.stringify(coursesData, null, 2));
+
+    // Leer los datos actuales del archivo JSON de niveles
+    const currentLevelsData = await fs.readFile('levels.json', 'utf8');
+    let levelsData = JSON.parse(currentLevelsData);
+
+    // Filtrar los niveles para excluir los niveles con idCourse igual al ID
+    levelsData = levelsData.filter(level => level.idCourse !== id);
+
+    // Escribir los datos actualizados en el archivo JSON de niveles
+    await fs.writeFile('levels.json', JSON.stringify(levelsData, null, 2));
 
     // Enviar una respuesta de éxito
     res.sendStatus(200);
 
   } catch (error) {
-    console.error('Error al eliminar el curso:', error);
+    console.error('Error al eliminar el curso y los niveles correspondientes:', error);
     res.sendStatus(500);
   }
 });
+
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });

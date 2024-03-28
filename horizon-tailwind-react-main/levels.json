@@ -20,26 +20,6 @@
     ]
   },
   {
-    "id": 3,
-    "idCourse": 3,
-    "part": "e",
-    "title": "e",
-    "status": 0,
-    "lessons": [
-      3
-    ]
-  },
-  {
-    "id": 4,
-    "idCourse": 4,
-    "part": "d",
-    "title": "d",
-    "status": 0,
-    "lessons": [
-      4
-    ]
-  },
-  {
     "id": 5,
     "idCourse": 5,
     "part": "sda",
