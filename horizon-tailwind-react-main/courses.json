@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "dasdas",
+    "photo": "das",
+    "levels": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 2,
+    "title": "asdas",
+    "photo": "d",
+    "levels": [
+      3
+    ]
+  }
+]

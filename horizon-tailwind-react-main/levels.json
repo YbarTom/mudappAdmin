@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": 1,
+    "idCourse": 1,
+    "part": "aa",
+    "title": "asdda",
+    "status": 0,
+    "lessons": [
+      1
+    ]
+  },
+  {
+    "id": 2,
+    "idCourse": 1,
+    "part": "asd",
+    "title": "das",
+    "status": 0,
+    "lessons": []
+  },
+  {
+    "id": 3,
+    "idCourse": 2,
+    "part": "asd",
+    "title": "dasd",
+    "status": 0,
+    "lessons": [
+      2
+    ]
+  }
+]

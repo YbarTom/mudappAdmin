@@ -50,7 +50,7 @@ export const RelateComponent = ({ idLesson }) => {
     };
 
     const crearFlashCard = () => {
-        console.log(pairs)
+        console.log(pairs);
 
         const flashCardEnviar = {
             id: 0,
@@ -58,11 +58,33 @@ export const RelateComponent = ({ idLesson }) => {
             type: "LessonRelate",
             title: title, // Assuming title is defined somewhere
             subtitle: "subtitle222",
-            options: [],
+            options: [], // Initialize as an empty array
             correctValues: []
         };
 
+        for (let i = 0; i < pairs.length; i++) {
+            // Initialize objects inside options array
+            flashCardEnviar.options.push({
+                idOption: i + 1,
+                left: { text: pairs[i].question1 }, // Initialize left object and assign text
+                right: { text: pairs[i].question2 } // Initialize right object and assign text
+            });
+        }
+
         console.log(flashCardEnviar);
+    };
+
+    const handleInputChangeRelate1 = (index, newText) => {
+        const updatedPairs = [...pairs];
+        updatedPairs[index].question1 = newText;
+        setPairs(updatedPairs);
+    };
+
+    const handleInputChangeRelate2 = (index, newText) => {
+
+        const updatedPairs = [...pairs];
+        updatedPairs[index].question2 = newText;
+        setPairs(updatedPairs);
     };
 
     return (
@@ -78,12 +100,14 @@ export const RelateComponent = ({ idLesson }) => {
                     <p>{`Pregunta ${index + 1}`}</p>
                     <InputContainer>
                         <ButtonFlashCard
+                            index={index}
                             initialText={pair.question1}
-                            clickHandler={(value) => handleInputChangeRelate(index, "question1", value)}
+                            clickHandler={handleInputChangeRelate1}
                         />
                         <ButtonFlashCard
+                            index={index}
                             initialText={pair.question2}
-                            clickHandler={(value) => handleInputChangeRelate(index, "question2", value)}
+                            clickHandler={handleInputChangeRelate2}
                         />
                     </InputContainer>
                 </div>
