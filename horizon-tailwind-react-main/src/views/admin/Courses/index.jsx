@@ -42,7 +42,7 @@ const Test = () => {
       <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
 
         {courses.map((course, index) => (
-          <CourseCard key={index} text={course.title} />
+          <CourseCard key={index} text={course.title} id={course.id}/>
         ))}
 
         <Link key={3} to={"/subdirectory/NewCourse"}>

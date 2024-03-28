@@ -304,6 +304,28 @@ app.post('/getFlashCards/:id', async (req, res) => {
   }
 })
 
+app.delete('/courses/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+
+    // Leer los datos actuales del archivo JSON
+    const currentData = await fs.readFile('courses.json', 'utf8');
+    const jsonData = JSON.parse(currentData);
+
+    // Filtrar los cursos para excluir el curso con el ID proporcionado
+    const updatedData = jsonData.filter(course => course.id !== id);
+
+    // Escribir los datos actualizados en el archivo JSON
+    await fs.writeFile('courses.json', JSON.stringify(updatedData, null, 2));
+
+    // Enviar una respuesta de éxito
+    res.sendStatus(200);
+
+  } catch (error) {
+    console.error('Error al eliminar el curso:', error);
+    res.sendStatus(500);
+  }
+});
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
